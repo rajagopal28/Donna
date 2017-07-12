@@ -1,5 +1,7 @@
 # Donna
 
+A web/mobile application attempt for #UnitedByHCL hackathon based on the indoor Navigation and smart office assistance chat bot.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
 ## Development server
