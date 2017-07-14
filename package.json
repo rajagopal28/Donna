@@ -6,11 +6,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build.prod": "ng build --prod --base-href \"/Donna/\" -output-path \"build/\"",
+    "build.prod": "ng build --prod --base-href \"/Donna/\" ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "git subtree push --prefix build origin gh-pages"
   },
   "private": true,
   "dependencies": {
