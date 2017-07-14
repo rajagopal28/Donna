@@ -2,6 +2,7 @@
 
 # compiled output
 /tmp
+/build
 /out-tsc
 
 # dependencies
