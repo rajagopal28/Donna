@@ -28,7 +28,7 @@ import { IndoorMapComponent } from './indoor-map/indoor-map.component';
         redirectTo: '/home',
         pathMatch: 'full'
 }
-    ])
+    ], {useHash: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
