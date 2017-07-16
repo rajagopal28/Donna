@@ -1,0 +1,10 @@
+<ul>
+  <li *ngFor="let message of messages">{{message.content}}
+    <a *ngIf="message.isNavigation" routerLink="/indoor-map" >Here</a>
+  </li>
+</ul>
+<div>
+    <label>message: </label>
+    <input [(ngModel)]="newMessage.content" placeholder="Message"/>
+    <button (click)="send(newMessage)">Send</button>
+</div>
