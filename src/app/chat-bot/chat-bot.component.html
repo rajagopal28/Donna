@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let message of messages">{{message.content}}
+  <li [class.my-chat]="message.isSelf" *ngFor="let message of messages">{{message.content}}
     <a *ngIf="message.isNavigation" routerLink="/indoor-map" >Here</a>
   </li>
 </ul>

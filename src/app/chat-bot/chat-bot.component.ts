@@ -16,13 +16,19 @@ export class ChatBotComponent implements OnInit {
   constructor() {
     let _self = this;
     this.newMessage = {content: 'Hello!'};
-    this.messages = [{content: 'Hello!'}];
     this.sendMessage(this.newMessage, (response) => {
       console.log(response);
       _self.messages.push({content: response.result.fulfillment.speech});
     });
    }
    sendMessage(message, cb) {
+   let cMsg = {isNavigation: false, content: message.content, isSelf: true};
+   if(this.messages) {
+    this.messages.push(cMsg);
+   } else {
+    this.messages = [cMsg];
+   }
+
    client.textRequest(message.content)
        .then((response) => {
         cb(response);
@@ -35,7 +41,7 @@ export class ChatBotComponent implements OnInit {
    let _self = this;
    this.sendMessage(this.newMessage, (response) => {
      console.log(response);
-      var result = {isNavigation: false, content: ''};
+      var result = {isNavigation: false, content: '', isSelf: false};
       result.isNavigation = response.result.action === 'navigation';
       result.content= response.result.fulfillment.speech;
      _self.messages.push(result);
