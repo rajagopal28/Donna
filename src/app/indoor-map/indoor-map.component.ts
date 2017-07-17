@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import {IndoorLocationDataService} from '../indoor-location-data.service';
+
 declare var Maze:any;
 @Component({
   selector: 'app-indoor-map',
