@@ -22,6 +22,12 @@ nav ul li a.brand {
   background-color: #159f90;
 }
 
+/*      main      */
+.main-content {
+  transform: translateY(-36.5px);
+  margin: 5% 5%;
+}
+
 /* Change the link color to #111 (black) on hover */
 nav ul li a:hover {
     background-color: #111;

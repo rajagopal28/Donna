@@ -1,8 +1,4 @@
-body {
-			margin: 0;
-		}
-
-		#mazemap-container {
-			width: 100vw;
-			height: 100vh;
-		}
+#mazemap-container {
+	width: 85vw;
+	height: 70vh;
+}

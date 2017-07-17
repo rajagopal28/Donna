@@ -1,27 +1,36 @@
-<div class="panel-body">
-    <ul class="chat">
-      <li *ngFor="let message of messages" class="right clearfix"><span class="chat-img pull-right">
-          <img src="http://placehold.it/50/FA6F57/fff&amp;text={{message.user}}" alt="User Avatar" class="img-circle"/>
+<div class="card">
+  <div class="card-header">
+    <span class="h3">
+       Chat Page!!
       </span>
-          <div class="chat-body clearfix">
-              <div class="header">
-                  <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{message.timestamp}}</small>
-                  <strong class="pull-right primary-font">{{message.user}}</strong>
+  </div>
+  <div class="card-block">
+    <div class="panel-body">
+        <ul class="chat">
+          <li *ngFor="let message of messages" class="right clearfix"><span class="chat-img" [class.pull-right]="message.isSelf" >
+              <img src="http://placehold.it/50/FA6F57/fff&amp;text={{message.user}}" alt="User Avatar" class="img-circle"/>
+          </span>
+              <div class="chat-body clearfix">
+                  <div class="header">
+                      <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{message.timestamp}}</small>
+                      <strong [class.pull-right]="message.isSelf" class="primary-font">{{message.user}}</strong>
+                  </div>
+                  <p>
+                      {{message.content}}
+                      <a *ngIf="message.isNavigation" routerLink="/indoor-map" >Here</a>
+                  </p>
               </div>
-              <p>
-                  {{message.content}}
-                  <a *ngIf="message.isNavigation" routerLink="/indoor-map" >Here</a>
-              </p>
-          </div>
-      </li>
-    </ul>
-</div>
-<div class="panel-footer">
-    <div class="input-group">
-        <input  [(ngModel)]="newMessage.content" id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
-        <span class="input-group-btn">
-            <button class="btn btn-warning btn-sm" id="btn-chat" (click)="send(newMessage)">
-                Send</button>
-        </span>
+          </li>
+        </ul>
     </div>
+    <div class="panel-footer">
+        <div class="input-group">
+            <input  [(ngModel)]="newMessage.content" id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
+            <span class="input-group-btn">
+                <button class="btn btn-warning btn-sm" id="btn-chat" (click)="send(newMessage)">
+                    Send</button>
+            </span>
+        </div>
+    </div>
+  </div>
 </div>
