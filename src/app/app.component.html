@@ -1,9 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="main-content">
-  <nav>
-     <a routerLink="/home">home</a>
-     <a routerLink="/indoor-map">Maps</a>
-     <a routerLink="/chat-bot">Chat</a>
-   </nav>
-  <router-outlet></router-outlet>
-</div>
+<nav>
+    <ul>
+      <li><a class="brand" routerLink="/home">Donna</a></li>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/indoor-map">Maps</a></li>
+      <li><a routerLink="/chat-bot">Chat</a></li>
+      <li class="right"><a href="#about">About</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
