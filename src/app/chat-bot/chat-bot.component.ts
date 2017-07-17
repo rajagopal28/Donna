@@ -12,43 +12,45 @@ export class ChatBotComponent implements OnInit {
   messages : [any];
   newMessage: any;
 
-
   constructor() {
     let _self = this;
     this.newMessage = {content: 'Hello!'};
     this.sendMessage(this.newMessage, (response) => {
-      console.log(response);
-      _self.messages.push({content: response.result.fulfillment.speech});
+      _self.addMessage(response, 'Donna');
     });
    }
-   sendMessage(message, cb) {
-   let cMsg = {isNavigation: false, content: message.content, isSelf: true};
-   if(this.messages) {
-    this.messages.push(cMsg);
-   } else {
-    this.messages = [cMsg];
+   addMessage(response, user) {
+     console.log(response);
+      var result = {isNavigation: false, content: '', isSelf: false, user : user, timestamp : new Date(), symbol: 'D'};
+      result.isNavigation = response.result.action === 'navigation';
+      result.content= response.result.fulfillment.speech;
+      if(this.messages) {
+       this.messages.push(result);
+      } else {
+       this.messages = [result];
+      }
    }
-
-   client.textRequest(message.content)
+   sendMessage(message, cb) {
+    let cMsg = {isNavigation: false, content: message.content, isSelf: true, user : 'Me', timestamp : new Date(), symbol: 'ME'};
+     if(this.messages) {
+      this.messages.push(cMsg);
+     } else {
+      this.messages = [cMsg];
+     }
+    client.textRequest(message.content)
        .then((response) => {
         cb(response);
        })
        .catch((error) => {
          console.error(error);
        });
-   }
+  }
    send(message: any): void {
-   let _self = this;
-   this.sendMessage(this.newMessage, (response) => {
-     console.log(response);
-      var result = {isNavigation: false, content: '', isSelf: false};
-      result.isNavigation = response.result.action === 'navigation';
-      result.content= response.result.fulfillment.speech;
-     _self.messages.push(result);
-   });
+     let _self = this;
+     this.sendMessage(this.newMessage, (response) => {
+       _self.addMessage(response, 'Donna');
+     });
    }
-
   ngOnInit() {
   }
-
 }
