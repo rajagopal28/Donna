@@ -11,7 +11,7 @@ const client = new ApiAiClient({accessToken: 'b71bf0851f6f41f8b1728e20c7946c25'}
 })
 export class ChatBotComponent implements OnInit {
   messages : [ChatItem];
-  newMessage: ChatItem;
+  newMessage: ChatItem = new ChatItem();
 
   constructor() {
     let _self = this;
