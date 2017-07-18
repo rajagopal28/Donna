@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiAiClient} from "api-ai-javascript";
 
+import { ChatItem } from '../models/app.models'
 const client = new ApiAiClient({accessToken: 'b71bf0851f6f41f8b1728e20c7946c25'})
 
 @Component({
@@ -9,19 +10,19 @@ const client = new ApiAiClient({accessToken: 'b71bf0851f6f41f8b1728e20c7946c25'}
   styleUrls: ['./chat-bot.component.css']
 })
 export class ChatBotComponent implements OnInit {
-  messages : [any];
-  newMessage: any;
+  messages : [ChatItem];
+  newMessage: ChatItem;
 
   constructor() {
     let _self = this;
-    this.newMessage = {content: 'Hi Donna'};
+    this.newMessage.content= 'Hi Donna';
     this.sendMessage(this.newMessage, (response) => {
       _self.addMessage(response, 'Donna');
     });
    }
    addMessage(response, user) {
      console.log(response);
-      var result = {isNavigation: false, content: '', isSelf: false, user : user, timestamp : new Date()};
+      var result : ChatItem = {isNavigation: false, content: '', isSelf: false, user : user, timestamp : new Date()};
       result.isNavigation = response.result.action === 'navigation';
       result.content= response.result.fulfillment.speech;
       if(this.messages) {
@@ -31,7 +32,7 @@ export class ChatBotComponent implements OnInit {
       }
    }
    sendMessage(message, cb) {
-    let cMsg = {isNavigation: false, content: message.content, isSelf: true, user : 'You', timestamp : new Date()};
+    let cMsg : ChatItem = {isNavigation: false, content: message.content, isSelf: true, user : 'You', timestamp : new Date()};
      if(this.messages) {
       this.messages.push(cMsg);
      } else {
