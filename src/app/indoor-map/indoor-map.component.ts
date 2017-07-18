@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import {IndoorLocationDataService} from '../indoor-location-data.service';
+import {IndoorLocationDataService} from '../services/indoor-location-data.service';
 
 declare var Maze:any;
 @Component({
@@ -10,7 +11,9 @@ declare var Maze:any;
 })
 export class IndoorMapComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+   private route: ActivatedRoute,
+   private router: Router) {}
 
   ngOnInit() {
   }
@@ -64,5 +67,7 @@ export class IndoorMapComponent implements OnInit {
     });
   });
   }
-
+  applyNavigation() : void {
+    console.log('applying navigation');
+  }
 }

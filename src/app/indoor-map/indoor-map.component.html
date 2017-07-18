@@ -5,6 +5,17 @@
       </span>
   </div>
   <div class="card-block">
+    <div class="form-inline">
+      <div class="form-group">
+        <label for="from">From Location:</label>
+        <input type="text" class="form-control" id="from">
+      </div>&nbsp;
+      <div class="form-group">
+        <label for="to">To Location:</label>
+        <input type="text" class="form-control" id="to">
+      </div>&nbsp;
+      <button (click)="applyNavigation()" class="btn btn-default">Submit</button>
+    </div>
     <div id="mazemap-container"></div>
   </div>
 </div>
