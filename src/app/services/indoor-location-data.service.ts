@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-const valiPois : [any] = [
+import { HotSpot } from '../models/app.models';
+
+const valiPois : [HotSpot] = [
    {
       name:"S119",
       building:"Winnett Building",
