@@ -1,31 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {map} from 'rxjs/operator/map';
+import {debounceTime} from 'rxjs/operator/debounceTime';
+import {distinctUntilChanged} from 'rxjs/operator/distinctUntilChanged';
 
 import {IndoorLocationDataService} from '../services/indoor-location-data.service';
+import { HotSpot } from '../models/app.models';
 
 declare var Maze:any;
 @Component({
   selector: 'app-indoor-map',
   templateUrl: './indoor-map.component.html',
-  styleUrls: ['./indoor-map.component.css']
+  styleUrls: ['./indoor-map.component.css'],
+  providers: [IndoorLocationDataService],
 })
 export class IndoorMapComponent implements OnInit {
 
+fromLocation : HotSpot;
+toLocation: HotSpot;
+fromLevel : number;
+toLevel: number;
+allLocations: [HotSpot];
+
   constructor(
    private route: ActivatedRoute,
-   private router: Router) {}
+   private router: Router,
+   private hotSpotService: IndoorLocationDataService) {}
 
   ngOnInit() {
+    this.allLocations = this.hotSpotService.getPoiLocations();
   }
   ngAfterViewInit() {
-  var map = Maze.map('mazemap-container', { campusloader: false });
-  Maze.Instancer.getCampus(119).then( function (campus) {
-    map.fitBounds(campus.getBounds());
-    campus.addTo(map).setActive().then( function() {
-        map.setZLevel(1);
-        map.getZLevelControl().show();
-    campus.addPoiCategory(27);    // 27 = bus stops
-    });;
+    var map = Maze.map('mazemap-container', { campusloader: false });
+    Maze.Instancer.getCampus(119).then( function (campus) {
+      map.fitBounds(campus.getBounds());
+      campus.addTo(map).setActive().then( function() {
+          map.setZLevel(1);
+          map.getZLevelControl().show();
+      campus.addPoiCategory(27);    // 27 = bus stops
+      });
   });
   // var fromLocation = {}
 
@@ -67,7 +81,12 @@ export class IndoorMapComponent implements OnInit {
     });
   });
   }
+  formatter = (result: HotSpot) => result.name + ' at ' + result.building;
   applyNavigation() : void {
     console.log('applying navigation');
+    console.log(this.toLocation);
   }
+  searchTo = (text$: Observable<string>) =>
+    map.call(distinctUntilChanged.call(debounceTime.call(text$, 200)),
+      term => term.length < 2 ? [] : this.allLocations.filter(v => v.building.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
 }

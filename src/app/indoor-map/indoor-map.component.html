@@ -12,10 +12,14 @@
       </div>&nbsp;
       <div class="form-group">
         <label for="to">To Location:</label>
-        <input type="text" class="form-control" id="to">
+        <input type="text" class="form-control" id="to" [(ngModel)]="toLocation" [ngbTypeahead]="searchTo" [resultTemplate]="rt" [inputFormatter]="formatter" >
       </div>&nbsp;
       <button (click)="applyNavigation()" class="btn btn-default">Submit</button>
     </div>
     <div id="mazemap-container"></div>
   </div>
 </div>
+
+<ng-template #rt let-r="result" let-t="term">
+  {{ r.name }} at {{ r.building }}
+</ng-template>
