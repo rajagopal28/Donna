@@ -85,8 +85,12 @@ allLocations: [HotSpot];
   applyNavigation() : void {
     console.log('applying navigation');
     console.log(this.toLocation);
+    console.log(this.fromLocation);
   }
   searchTo = (text$: Observable<string>) =>
     map.call(distinctUntilChanged.call(debounceTime.call(text$, 200)),
-      term => term.length < 2 ? [] : this.allLocations.filter(v => v.building.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
-}
+      term => term.length < 2 ? [] : this.allLocations.filter(v =>  v.building.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+  searchFrom = (text$: Observable<string>) =>
+        map.call(distinctUntilChanged.call(debounceTime.call(text$, 200)),
+          term => term.length < 2 ? [] : this.allLocations.filter(v =>  v.building.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+ }
