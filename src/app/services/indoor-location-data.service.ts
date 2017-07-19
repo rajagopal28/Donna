@@ -3,6 +3,7 @@ import { HotSpot } from '../models/app.models';
 
 const valiPois : [HotSpot] = [
    {
+      id: 1,
       name:"S119",
       building:"Winnett Building",
       location:{
@@ -11,6 +12,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 2,
       name:"Office",
       building:"Winnett Building",
       location:{
@@ -19,6 +21,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 3,
       name:"S130",
       building:"Winnett Building",
       location:{
@@ -27,6 +30,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 4,
       name:"S110",
       building:"Winnett Building",
       location:{
@@ -35,6 +39,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 5,
       name:"Center on Male Engagement",
       building:"Winnett Building",
       location:{
@@ -43,6 +48,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 6,
       name:"S112",
       building:"Winnett Building",
       location:{
@@ -51,6 +57,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 7,
       name:"W1-1",
       building:"West Building",
       location:{
@@ -59,6 +66,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 8,
       name:"W1-7",
       building:"West Building",
       location:{
@@ -67,6 +75,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 9,
       name:"Dental",
       building:"West Building",
       location:{
@@ -75,6 +84,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 10,
       name:"W1-24",
       building:"West Building",
       location:{
@@ -83,6 +93,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 11,
       name:"W1-24N",
       building:"West Building",
       location:{
@@ -91,6 +102,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 12,
       name:"W1-1V",
       building:"West Building",
       location:{
@@ -99,6 +111,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 13,
       name:"W1-25",
       building:"West Building",
       location:{
@@ -107,6 +120,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 14,
       name:"W1-16",
       building:"West Building",
       location:{
@@ -115,6 +129,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 15,
       name:"Toilets",
       building:"Bonnell Building",
       location:{
@@ -123,6 +138,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 16,
       name:"Library",
       building:"Mint Building",
       location:{
@@ -131,6 +147,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 17,
       name:"Office",
       building:"Mint Building",
       location:{
@@ -139,6 +156,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 18,
       name:"M1-20D",
       building:"Mint Building",
       location:{
@@ -147,6 +165,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 18,
       name:"Day Care",
       building:"Day Care",
       location:{
@@ -155,6 +174,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 19,
       name:"C1-33 ",
       building:"Center For Business & Industry",
       location:{
@@ -163,6 +183,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 20,
       name:"Career Services Center",
       building:"Center For Business & Industry",
       location:{
@@ -171,6 +192,7 @@ const valiPois : [HotSpot] = [
       }
    },
    {
+      id: 21,
       name:"Conference Room",
       building:"Center For Business & Industry",
       location:{

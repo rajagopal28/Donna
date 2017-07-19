@@ -4,6 +4,7 @@ export class Location {
    lng: number;
 }
 export class HotSpot {
+  id: number;
   name: String;
   building: String;
   location: Location;
