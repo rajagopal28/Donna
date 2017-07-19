@@ -21,6 +21,7 @@ fromLocation : HotSpot;
 toLocation: HotSpot;
 fromLevel : number;
 toLevel: number;
+levels : [number];
 allLocations: [HotSpot];
 imap: any;
 
@@ -33,21 +34,21 @@ imap: any;
   ngOnInit() {
     this.allLocations = this.hotSpotService.getPoiLocations();
     this.fromLevel = this.toLevel = 1;
+    this.levels = this.hotSpotService.getLevels();
   }
   ngAfterViewInit() {
     this.imap = Maze.map('mazemap-container', { campusloader: false });
     var imap = this.imap;
-    Maze.Instancer.getCampus(119).then( function (campus) {
+    Maze.Instancer.getCampus(119).then((campus) => {
       imap.fitBounds(campus.getBounds());
       campus.addTo(imap).setActive().then( function() {
           imap.setZLevel(1);
           imap.getZLevelControl().show();
-      campus.addPoiCategory(27);    // 27 = bus stops
+          campus.addPoiCategory(27);    // 27 = bus stops
+          });
+      }).catch((error) => {
+        console.log(error);
       });
-  });
-    var startLatLng : [number] = [39.96216351996103, -75.17163276672365];
-    var endLatLng: [number] = [39.961970271724084,-75.16677260398866];
-    this.navigateBetweenLocations(startLatLng, endLatLng, 1, 1);
   }
   navigateBetweenLocations(startLatLng: [number], endLatLng: [number], startLevel: number, endLevel: number) : void {
     var imap = this.imap;
@@ -71,10 +72,12 @@ imap: any;
           connectToEnd: true,
     //         avoidStairs: true
       }
-    ).then(function(featGroup){
+    ).then((featGroup) => {
       featGroup.addTo(imap);
       imap.fitBounds(featGroup.getBounds());
       imap.setZLevel(1);
+    }).catch((error) => {
+      console.log(error);
     });
   }
   formatter = (result: HotSpot) => result.name + ' at ' + result.building;
