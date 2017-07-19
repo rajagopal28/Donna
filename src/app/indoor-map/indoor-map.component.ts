@@ -22,6 +22,8 @@ toLocation: HotSpot;
 fromLevel : number;
 toLevel: number;
 allLocations: [HotSpot];
+imap: any;
+
 
   constructor(
    private route: ActivatedRoute,
@@ -30,62 +32,61 @@ allLocations: [HotSpot];
 
   ngOnInit() {
     this.allLocations = this.hotSpotService.getPoiLocations();
+    this.fromLevel = this.toLevel = 1;
   }
   ngAfterViewInit() {
-    var map = Maze.map('mazemap-container', { campusloader: false });
+    this.imap = Maze.map('mazemap-container', { campusloader: false });
+    var imap = this.imap;
     Maze.Instancer.getCampus(119).then( function (campus) {
-      map.fitBounds(campus.getBounds());
-      campus.addTo(map).setActive().then( function() {
-          map.setZLevel(1);
-          map.getZLevelControl().show();
+      imap.fitBounds(campus.getBounds());
+      campus.addTo(imap).setActive().then( function() {
+          imap.setZLevel(1);
+          imap.getZLevelControl().show();
       campus.addPoiCategory(27);    // 27 = bus stops
       });
   });
-  // var fromLocation = {}
+    var startLatLng : [number] = [39.96216351996103, -75.17163276672365];
+    var endLatLng: [number] = [39.961970271724084,-75.16677260398866];
+    this.navigateBetweenLocations(startLatLng, endLatLng, 1, 1);
+  }
+  navigateBetweenLocations(startLatLng: [number], endLatLng: [number], startLevel: number, endLevel: number) : void {
+    var imap = this.imap;
+    Maze.marker(startLatLng, {
+      zLevel: startLevel,
+      offZOpacity: 0.4,
+      icon: Maze.icon.chub({ color: 'green', glyph: 'human' })
+    }).addTo(imap);
+    Maze.marker(endLatLng,   {
+      zLevel: startLevel,
+      offZOpacity: 0.4,
+      icon: Maze.icon.chub({ color: 'red', glyph: 'walk' })
+    }).addTo(imap);
 
-  var startLatLng = [39.96216351996103, -75.17163276672365];
-  var endLatLng = [39.961970271724084,-75.16677260398866];
-  Maze.marker(startLatLng, {
-    zLevel: 1,
-    offZOpacity: 0.4,
-    icon: Maze.icon.chub({ color: 'green', glyph: 'human' })
-  }).addTo(map);
-  Maze.marker(endLatLng,   {
-    zLevel: 1,
-    offZOpacity: 0.4,
-    icon: Maze.icon.chub({ color: 'red', glyph: 'walk' })
-  }).addTo(map);
 
-
-  Maze.Route.getFeatureGroupRoute(   // Can be replaced with Maze.Route.getGeoJsonRoute(
-    startLatLng, 1,
-    endLatLng, 1,
-    {
-        connectToStart: true,
-        connectToEnd: true,
-  //         avoidStairs: true
-    }
-  ).then(function(featGroup){
-    featGroup.addTo(map);
-    map.fitBounds(featGroup.getBounds());
-    map.setZLevel(1);
-  });
-
-  map.on('click', function(ev) {
-    Maze.Instancer.getPoiAt(ev.latlng, map.getZLevel()).then(function(marker) {
-        if (marker) {
-            marker.bindPopup(marker.properties.name).addTo(map).openPopup();
-        } else {
-            map.openPopup('No POI here', ev.latlng);
-        }
+    Maze.Route.getFeatureGroupRoute(   // Can be replaced with Maze.Route.getGeoJsonRoute(
+      startLatLng, startLevel,
+      endLatLng, endLevel,
+      {
+          connectToStart: true,
+          connectToEnd: true,
+    //         avoidStairs: true
+      }
+    ).then(function(featGroup){
+      featGroup.addTo(imap);
+      imap.fitBounds(featGroup.getBounds());
+      imap.setZLevel(1);
     });
-  });
   }
   formatter = (result: HotSpot) => result.name + ' at ' + result.building;
   applyNavigation() : void {
     console.log('applying navigation');
     console.log(this.toLocation);
     console.log(this.fromLocation);
+    if(this.toLocation.id !== this.fromLocation.id) {
+      var startLatLng : [number] = [this.fromLocation.location.lat, this.fromLocation.location.lng];
+      var endLatLng : [number] = [this.toLocation.location.lat, this.toLocation.location.lng];
+      this.navigateBetweenLocations(startLatLng, endLatLng, this.fromLevel, this.toLevel);
+    }
   }
   searchTo = (text$: Observable<string>) =>
     map.call(distinctUntilChanged.call(debounceTime.call(text$, 200)),

@@ -9,11 +9,17 @@
       <div class="form-group">
         <label for="from">From Location:</label>
         <input type="text" class="form-control" id="from" [(ngModel)]="fromLocation" [ngbTypeahead]="searchFrom" [resultTemplate]="rt" [inputFormatter]="formatter" >
+        &nbsp;
+        <label for="fromLevel">From Level:</label>
+        <input type="text" class="form-control" id="fromLevel" [(ngModel)]="fromLevel">
       </div>&nbsp;
       <div class="form-group">
         <label for="to">To Location:</label>
         <input type="text" class="form-control" id="to" [(ngModel)]="toLocation" [ngbTypeahead]="searchTo" [resultTemplate]="rt" [inputFormatter]="formatter" >
-      </div>&nbsp;
+        &nbsp;
+        <label for="toLevel">To Level:</label>
+        <input type="text" class="form-control" id="toLevel" [(ngModel)]="toLevel">
+        </div>&nbsp;
       <button (click)="applyNavigation()" class="btn btn-default">Submit</button>
     </div>
     <div id="mazemap-container"></div>
