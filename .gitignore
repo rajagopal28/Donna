@@ -8,6 +8,10 @@
 # dependencies
 /node_modules
 /nativescript/node_modules
+/nativescript/platforms
+/nativescript/@angular
+/nativescript/npm
+/nativesctipt/nativescript
 
 # IDEs and editors
 /.idea
