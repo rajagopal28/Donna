@@ -1,24 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiAiClient} from "api-ai-javascript";
 
-import { ChatItem } from '../models/app.models'
+import { ChatItem } from '../models/app.models';
+import { IndoorLocationDataService } from '../services/indoor-location-data.service';
 const client = new ApiAiClient({accessToken: 'b71bf0851f6f41f8b1728e20c7946c25'})
 
 @Component({
   selector: 'app-chat-bot',
   templateUrl: './chat-bot.component.html',
-  styleUrls: ['./chat-bot.component.css']
+  styleUrls: ['./chat-bot.component.css'],
+  providers: [IndoorLocationDataService]
 })
 export class ChatBotComponent implements OnInit {
   messages : [ChatItem];
   newMessage: ChatItem = new ChatItem();
+  fromLocationPosition: number;
+  toLocationPosition: number;
+  constructor(
+   private hotSpotService: IndoorLocationDataService) {}
 
-  constructor() {
+  ngOnInit() {
     let _self = this;
     this.newMessage.content= 'Hi Donna';
     this.sendMessage(this.newMessage, (response) => {
       _self.addMessage(response, 'Donna');
     });
+    let locationCount = this.hotSpotService.getPoiLocations().length;
+    this.fromLocationPosition = Math.round((Math.random() * 99999) % locationCount) + 1;
+    this.toLocationPosition = Math.round((Math.random() * 99999) % locationCount) + 1;
    }
    addMessage(response, user) {
      console.log(response);
@@ -52,6 +61,4 @@ export class ChatBotComponent implements OnInit {
        _self.addMessage(response, 'Donna');
      });
    }
-  ngOnInit() {
-  }
 }
