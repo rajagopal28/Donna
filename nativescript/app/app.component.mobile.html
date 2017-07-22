@@ -1,15 +1,18 @@
-<TabView [(ngModel)]="tabSelectedIndex" selectedColor="#FF0000" iosIconRenderingMode="alwaysOriginal" sdkExampleTitle sdkToggleNavButton>
+<TabView [(ngModel)]="tabSelectedIndex" selectedColor="#FF0000" iosIconRenderingMode="alwaysOriginal" [title]="title" sdkToggleNavButton>
     <StackLayout *tabItem="{title: 'Profile', iconSource: 'res://icon'}" >
         <ListView [items]="items">
             <ng-template let-item="item">
                 <Label [text]="item.itemDesc"></Label>
             </ng-template>
         </ListView>
+
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Stats'}">
-        <Label text="Second tab item"></Label>
+    <StackLayout *tabItem="{title: 'Home'}">
+        <Label text="Welcome To smart office!! Tada!!"></Label>
+        <Image src="~/images/donna.gif"></Image>
+        <HtmlView [html]="htmlString" ></HtmlView>
     </StackLayout>
     <StackLayout *tabItem="{title: 'Settings'}">
-        <Label text="Third tab item"></Label>
+        <Label text="Third tab item.. New Content"></Label>
     </StackLayout>
 </TabView>
