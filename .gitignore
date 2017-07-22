@@ -9,9 +9,7 @@
 /node_modules
 /nativescript/node_modules
 /nativescript/platforms
-/nativescript/@angular
-/nativescript/npm
-/nativesctipt/nativescript
+/nativescript/nativescript
 
 # IDEs and editors
 /.idea
