@@ -1,3 +1,15 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<ActionBar title="{{title}}" class="action-bar"></ActionBar>
-<Label text='Here Goes Some text'></Label>
+<TabView [(ngModel)]="tabSelectedIndex" selectedColor="#FF0000" iosIconRenderingMode="alwaysOriginal" sdkExampleTitle sdkToggleNavButton>
+    <StackLayout *tabItem="{title: 'Profile', iconSource: 'res://icon'}" >
+        <ListView [items]="items">
+            <ng-template let-item="item">
+                <Label [text]="item.itemDesc"></Label>
+            </ng-template>
+        </ListView>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Stats'}">
+        <Label text="Second tab item"></Label>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Settings'}">
+        <Label text="Third tab item"></Label>
+    </StackLayout>
+</TabView>
