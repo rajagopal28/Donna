@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { StackLayout } from "ui/layouts/stack-layout";
+import { TextField } from 'ui/text-field';
 import {ApiAiClient} from "api-ai-javascript";
 
 import { ChatItem } from '../models/app.models';
@@ -15,9 +16,16 @@ const client = new ApiAiClient({accessToken: 'b71bf0851f6f41f8b1728e20c7946c25'}
 })
 export class ChatBotComponent implements OnInit {
   messages : [ChatItem];
+  message: string;
+
   newMessage: ChatItem = new ChatItem();
   fromLocationPosition: number;
   toLocationPosition: number;
+
+  @ViewChild("textfield") tf: ElementRef;
+
+  textfield: TextField;
+
   constructor(
    private hotSpotService: IndoorLocationDataService) {}
 
@@ -32,6 +40,11 @@ export class ChatBotComponent implements OnInit {
     this.fromLocationPosition = Math.round((Math.random() * 99999) % locationCount) + 1;
     this.toLocationPosition = Math.round((Math.random() * 99999) % locationCount) + 1;
    }
+
+    ngAfterViewInit() {
+        this.textfield = this.tf.nativeElement;
+    }
+
    addMessage(response, user) {
      console.log(response);
       var result : ChatItem = {isNavigation: false, content: '', isSelf: false, user : user, timestamp : new Date()};
@@ -67,10 +80,15 @@ export class ChatBotComponent implements OnInit {
          console.error(error);
        });
   }
-   send(message: ChatItem): void {
+   send(): void {
      let _self = this;
+     let message = this.textfield.text;
+     this.newMessage.content = message? message : this.newMessage.content;
+     console.log(JSON.stringify(this.newMessage));
+     console.log(message);
      this.sendMessage(this.newMessage, (response) => {
        _self.addMessage(response, 'Donna');
      });
+     this.textfield.text = '';
    }
 }

@@ -57,8 +57,6 @@ export class ChatBotComponent implements OnInit {
   }
    send(message: ChatItem): void {
      let _self = this;
-     console.log(JSON.stringify(this.newMessage));
-     console.log(JSON.stringify(message));
      this.sendMessage(this.newMessage, (response) => {
        _self.addMessage(response, 'Donna');
      });

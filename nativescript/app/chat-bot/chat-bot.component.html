@@ -14,7 +14,7 @@
     </ScrollView>
     <StackLayout height="10%">
         <GridLayout columns="*,auto" style="padding: 10">
-            <TextField #textfield class="chatTextField" row="0" col="0" [(ngModel)]="newMessage.content"></TextField>
+            <TextField #textfield class="chatTextField" row="0" col="0"></TextField>
             <Button #btn class="chatBtn" row="0" col="1" text="send" (tap)=send()></Button>
         </GridLayout>
     </StackLayout>
