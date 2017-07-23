@@ -10,6 +10,7 @@ const client = new ApiAiClient({accessToken: 'b71bf0851f6f41f8b1728e20c7946c25'}
 @Component({
   selector: 'ChatBot',
   templateUrl: './chat-bot/chat-bot.component.html',
+  styleUrls:[ './chat-bot/chat-bot.component.css' ],
   providers: [IndoorLocationDataService]
 })
 export class ChatBotComponent implements OnInit {
@@ -42,6 +43,15 @@ export class ChatBotComponent implements OnInit {
        this.messages = [result];
       }
    }
+   align(item : ChatItem) {
+        return item.isSelf? "right" : "left";
+    }
+    showImage(item: ChatItem) {
+        return item.isSelf ? "collapse" : "visible";
+    }
+    showNav(item: ChatItem) {
+        return item.isNavigation ? "visible" :  "collapse";
+    }
    sendMessage(message, cb) {
     let cMsg : ChatItem = {isNavigation: false, content: message.content, isSelf: true, user : 'You', timestamp : new Date()};
      if(this.messages) {
@@ -57,7 +67,7 @@ export class ChatBotComponent implements OnInit {
          console.error(error);
        });
   }
-   send(message: any): void {
+   send(message: ChatItem): void {
      let _self = this;
      this.sendMessage(this.newMessage, (response) => {
        _self.addMessage(response, 'Donna');

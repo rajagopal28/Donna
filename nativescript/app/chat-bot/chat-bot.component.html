@@ -1,11 +1,21 @@
 <StackLayout>
     <ScrollView #scrollview height="90%">
-            <!--the chat takes place here-->
+      <ListView padding="5" #list separatorColor="#fff" [items]="messages" class="list">
+        <ng-template let-item="item">
+            <GridLayout columns="*" rows="auto" class="msg">
+                  <StackLayout [class]="item.user" orientation="horizontal" [horizontalAlignment]="align(item)">
+                    <Image [visibility]="showImage(item)" class="authorimg" stretch="aspectFill" height="30" width="30" verticalAlignment="top" src="~/images/donna-chat.jpg" col="1"></Image>
+                    <Label [text]="item.content" class="msg_text" textWrap="true" verticalAlignment="top"></Label>
+                    <Button text="Nagivation Link" [visibility]="showNav(item.isNavigation)"></Button>
+                  </StackLayout>
+              </GridLayout>
+        </ng-template>
+      </ListView>
     </ScrollView>
     <StackLayout height="10%">
         <GridLayout columns="*,auto" style="padding: 10">
-            <TextField #textfield class="chatTextField" row="0" col="0" [(ngModel)]="message"></TextField>
-            <Button #btn class="chatBtn" row="0" col="1" text="send" (tap)=chat(message)></Button>
+            <TextField #textfield class="chatTextField" row="0" col="0" [(ngModel)]="newMessage.content"></TextField>
+            <Button #btn class="chatBtn" row="0" col="1" text="send" (tap)=send()></Button>
         </GridLayout>
     </StackLayout>
 </StackLayout>
