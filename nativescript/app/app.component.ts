@@ -3,6 +3,7 @@ import { StackLayout } from "ui/layouts/stack-layout";
 
 import { TabView, SelectedIndexChangedEventData, TabViewItem } from "ui/tab-view";
 import { HomeComponent } from './home/home.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 export class DataItem {
     constructor(public itemDesc: string) {}

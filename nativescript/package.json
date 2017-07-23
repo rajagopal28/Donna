@@ -20,6 +20,7 @@
 		"@angular/http": "~4.1.0",
 		"@angular/platform-browser": "~4.1.0",
 		"@angular/router": "~4.1.0",
+		"api-ai-javascript": "^2.0.0-beta.21",
 		"nativescript-angular": "~3.0.0",
 		"nativescript-theme-core": "~1.0.2",
 		"reflect-metadata": "~0.1.8",
