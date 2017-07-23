@@ -2,6 +2,8 @@
 
 A web/mobile application attempt for #UnitedByHCL hackathon based on the indoor Navigation and smart office assistance chat bot.
 
+Download the mobile application executable  [Here]( https://file.ac/G5EImf07QBs/com.nativescript.donna.ai­.apk )
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
 ## Development server
