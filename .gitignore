@@ -10,6 +10,9 @@
 /nativescript/node_modules
 /nativescript/platforms
 /nativescript/nativescript
+nativescript/@angular/
+nativescript/bower/
+nativescript/ember-cli/
 
 # IDEs and editors
 /.idea
