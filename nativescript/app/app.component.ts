@@ -5,6 +5,7 @@ import { TabView, SelectedIndexChangedEventData, TabViewItem } from "ui/tab-view
 import { HomeComponent } from './home/home.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { IndoorMapComponent } from './indoor-map/indoor-map.component';
+import { GoogleIndoorComponent } from './google-indoor/google-indoor.component';
 
 export class DataItem {
     constructor(public itemDesc: string) {}
@@ -26,6 +27,6 @@ export class AppComponent {
         for (let i = 0; i < 5; i++) {
             this.items.push(new DataItem("item " + i*10));
         }
-        console.log('Varuthaa...');
+        console.log('Varuthaa...With Maps');
     }
 }
