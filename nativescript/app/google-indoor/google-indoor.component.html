@@ -1,0 +1,9 @@
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<Label text="MapsView2!!"></Label>
+<MapView [latitude]="lat" [longitude]="lng"
+[zoom]="zoom" [bearing]="bearing"
+[tilt]="tilt" (mapReady)="OnMapReady($event)"
+(markerSelect)="onMarkerSelect"
+(cameraChanged)="onCameraChanged">
+</MapView>
