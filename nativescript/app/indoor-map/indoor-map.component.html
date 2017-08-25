@@ -1,1 +1,7 @@
-<WebView #myWebView [src]="webViewSrc"></WebView>
+<Label text="Indoor maps part2"></Label>
+<MapView2 [latitude]="lat" [longitude]="lng"
+[zoom]="zoom" [bearing]="bearing"
+[tilt]="tilt" (mapReady)="OnMapReady($event)"
+(markerSelect)="onMarkerSelect"
+(cameraChanged)="onCameraChanged">
+</MapView2>
