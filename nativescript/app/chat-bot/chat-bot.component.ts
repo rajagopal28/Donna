@@ -36,7 +36,7 @@ export class ChatBotComponent implements OnInit {
     this.sendMessage(this.newMessage, (response) => {
       _self.addMessage(response, 'Donna');
     });
-    let locationCount = this.hotSpotService.getPoiLocations().length;
+    let locationCount = 10;
     this.fromLocationPosition = Math.round((Math.random() * 99999) % locationCount) + 1;
     this.toLocationPosition = Math.round((Math.random() * 99999) % locationCount) + 1;
    }
