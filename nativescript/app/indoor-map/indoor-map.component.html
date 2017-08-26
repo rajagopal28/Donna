@@ -1,4 +1,4 @@
-<Label text="Indoor maps part2"></Label>
+<HtmlView [html]="routeText" ></HtmlView>
 <MapView2 [latitude]="lat" [longitude]="lng"
 [zoom]="zoom" [bearing]="bearing"
 [tilt]="tilt" (mapReady)="OnMapReady($event)"
