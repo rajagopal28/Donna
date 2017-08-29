@@ -5,8 +5,8 @@
             <GridLayout columns="*" rows="auto" class="msg">
                   <StackLayout [class]="item.user" orientation="horizontal" [horizontalAlignment]="align(item)">
                     <Image [visibility]="showImage(item)" class="authorimg" stretch="aspectFill" height="30" width="30" verticalAlignment="top" src="~/images/donna-chat.jpg" col="1"></Image>
-                    <Label [text]="item.content" class="msg_text" textWrap="true" verticalAlignment="top"></Label>
-                    <Button text="Nagivation Link" [visibility]="showNav(item)"></Button>
+                    <Label [visibility]="showText(item)" [text]="item.content" class="msg_text" textWrap="true" verticalAlignment="top"></Label>
+                    <Button (tap)=openNav(item) text="Nagivation Link" clas="nav_button" [visibility]="showNav(item)"></Button>
                   </StackLayout>
               </GridLayout>
         </ng-template>

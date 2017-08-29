@@ -37,7 +37,7 @@ ListView {
     border-radius: 4;
 }
 
-Button {
+Button.chatBtn, .Donna .nav_button {
     padding: 5;
     margin: 5;
     background-color: dodgerblue;

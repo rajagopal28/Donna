@@ -46,14 +46,17 @@ export class ChatBotComponent implements OnInit {
     }
 
    addMessage(response, user) {
-     console.log(response);
       var result : ChatItem = {isNavigation: false, content: '', isSelf: false, user : user, timestamp : new Date()};
-      result.isNavigation = response.result.action === 'navigation';
+      let isNavigation = (response.result.action === 'navigation');
       result.content= response.result.fulfillment.speech;
       if(this.messages) {
        this.messages.push(result);
       } else {
        this.messages = [result];
+      }
+      if(isNavigation) {
+        var navResult : ChatItem = {isNavigation: true, content: '', isSelf: false, user : user, timestamp : new Date()};
+        this.messages.push(navResult);
       }
    }
    align(item : ChatItem) {
@@ -61,6 +64,9 @@ export class ChatBotComponent implements OnInit {
     }
     showImage(item: ChatItem) {
         return item.isSelf ? "collapse" : "visible";
+    }
+    showText(item: ChatItem) {
+      return item.isNavigation ? "collapse" : "visible" ;
     }
     showNav(item: ChatItem) {
         return item.isNavigation ? "visible" :  "collapse";
@@ -79,6 +85,9 @@ export class ChatBotComponent implements OnInit {
        .catch((error) => {
          console.error(error);
        });
+  }
+  openNav(item: ChatItem) {
+    console.log('opening nav for', JSON.stringify(item));
   }
    send(): void {
      let _self = this;

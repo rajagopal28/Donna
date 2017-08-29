@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 export class Location {
    lat: number;
    lng: number;
+   z: number;
 }
 export class HotSpot {
   id: number;
