@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 export class Location {
    lat: number;
    lng: number;
+   latitude: number;
+   longitude: number;
+   name: string;
+   id: number;
 }
 export class HotSpot {
   id: number;
@@ -16,4 +20,14 @@ export class ChatItem {
   isSelf: boolean;
   user : string;
   timestamp : Date
+}
+
+
+export class User {
+  firstName: string;
+  lastName: string;
+  createdTS: number;
+  lastUpdatedTS : number;
+  username : string;
+  password: string;
 }
