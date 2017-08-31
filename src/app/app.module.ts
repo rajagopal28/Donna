@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule }   from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
+import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { SignupComponent } from './users/signup/signup.component';
     NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
+    HttpModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCXNSYiB8v_Vb_a3Z9gH2idT6Z3adg5mAk'
     }),
@@ -56,6 +58,9 @@ import { SignupComponent } from './users/signup/signup.component';
       },{
         path: 'signup',
         component: SignupComponent
+      },{
+        path: 'list',
+        component: ViewUsersComponent
       }, {
         path: '',
         redirectTo: '/home',
