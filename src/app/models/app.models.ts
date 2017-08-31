@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-export class Location {
+export class ILocation {
    lat: number;
    lng: number;
+ }
+ export class Location {
    latitude: number;
    longitude: number;
    name: string;
@@ -11,7 +13,7 @@ export class HotSpot {
   id: number;
   name: String;
   building: String;
-  location: Location;
+  location: ILocation;
 }
 
 export class ChatItem {

@@ -60,7 +60,7 @@ import { SignupComponent } from './users/signup/signup.component';
         component: SignupComponent
       },{
         path: 'list',
-        component: ViewUsersComponent
+        component: ViewLocationsComponent
       }, {
         path: '',
         redirectTo: '/home',
