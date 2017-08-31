@@ -10,6 +10,13 @@ import { HomeComponent } from './home/home.component';
 import { IndoorMapComponent } from './indoor-map/indoor-map.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { GoogleIndoorComponent } from './google-indoor/google-indoor.component';
+import { ViewLocationsComponent } from './admin/view-locations/view-locations.component';
+import { AddLocationComponent } from './admin/add-location/add-location.component';
+import { AddCampusComponent } from './admin/add-campus/add-campus.component';
+import { ViewCampusComponent } from './admin/view-campus/view-campus.component';
+import { ViewUsersComponent } from './admin/view-users/view-users.component';
+import { LoginComponent } from './users/login/login.component';
+import { SignupComponent } from './users/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +24,21 @@ import { GoogleIndoorComponent } from './google-indoor/google-indoor.component';
     HomeComponent,
     IndoorMapComponent,
     ChatBotComponent,
-    GoogleIndoorComponent
+    GoogleIndoorComponent,
+    ViewLocationsComponent,
+    AddLocationComponent,
+    AddCampusComponent,
+    ViewCampusComponent,
+    ViewUsersComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: '<YourAPIKey>'
+      apiKey: 'AIzaSyCXNSYiB8v_Vb_a3Z9gH2idT6Z3adg5mAk'
     }),
     RouterModule.forRoot([
       {
@@ -39,6 +53,9 @@ import { GoogleIndoorComponent } from './google-indoor/google-indoor.component';
       },{
         path: 'google-indoor',
         component: GoogleIndoorComponent
+      },{
+        path: 'signup',
+        component: SignupComponent
       }, {
         path: '',
         redirectTo: '/home',
