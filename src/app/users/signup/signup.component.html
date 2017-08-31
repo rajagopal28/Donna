@@ -8,26 +8,33 @@
     <form>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputEmail4" class="col-form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+          <label for="inputCity" class="col-form-label">First Name</label>
+          <input type="text" name="firstName" [(ngModel)]="user.firstName" class="form-control" id="firstName">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputPassword4" class="col-form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+          <label for="inputLastName" class="col-form-label">Last Name</label>
+          <input type="text" name="lastName" [(ngModel)]="user.lastName" class="form-control" id="lastName">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputLocation" class="col-form-label">Location</label>
+          <select id="locationId" [(ngModel)]="user.locationId" name="locationId"  class="form-control">
+            <option>Choose Location</option>
+            <<option *ngFor="let location of locations" value="{{location.id}}">{{location.name}}</option>
+          </select>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputCity" class="col-form-label">City</label>
-          <input type="text" class="form-control" id="inputCity">
+          <label for="inputUsername4" class="col-form-label">Username</label>
+          <input type="text" name="username" [(ngModel)]="user.username" class="form-control" id="username" placeholder="Username">
         </div>
-        <div class="form-group col-md-4">
-          <label for="inputState" class="col-form-label">State</label>
-          <select id="inputState" class="form-control">Choose</select>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4"  class="col-form-label">Password</label>
+          <input type="password" class="form-control" [(ngModel)]="user.password" name="password" id="password" placeholder="Password">
         </div>
-        <div class="form-group col-md-2">
-          <label for="inputZip" class="col-form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip">
+        <div class="form-group col-md-6">
+          <label for="inputPassword5" class="col-form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="inputPassword5" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
         </div>
       </div>
       <div class="form-group">
@@ -37,7 +44,7 @@
           </label>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button (click)="signUp()" type="submit" class="btn btn-primary">Sign in</button>
     </form>
   </div>
 </div>
