@@ -9,6 +9,15 @@ export class ILocation {
    name: string;
    id: number;
 }
+
+export class Campus {
+  latitude: number;
+  longitude: number;
+  name: string;
+  id: number;
+  locations : [Location];
+}
+
 export class HotSpot {
   id: number;
   name: String;
