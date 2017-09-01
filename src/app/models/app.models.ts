@@ -8,6 +8,7 @@ export class ILocation {
    longitude: number;
    name: string;
    id: number;
+   campusId: number;
 }
 
 export class Campus {

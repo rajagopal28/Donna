@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Campus, Location } from '../../models/app.models';
-import {LocationDataService} from '../../services/location-data.service'
+import {LocationDataService} from '../../services/location-data.service';
 @Component({
   selector: 'AddLocation',
   templateUrl: './add-location.component.html',
