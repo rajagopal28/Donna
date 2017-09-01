@@ -1,3 +1,27 @@
-<p>
-  add-campus works!
-</p>
+<div class="card">
+  <div class="card-block">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputName" class="col-form-label">Name</label>
+          <input type="text" name="name" [(ngModel)]="campus.name" class="form-control" id="name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputLatitude" class="col-form-label">Latitude</label>
+          <input type="number" name="latitude" [(ngModel)]="campus.latitude" class="form-control" id="latitude">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputLongitude" class="col-form-label">Longitude</label>
+          <input type="number" name="longitude" [(ngModel)]="campus.longitude" class="form-control" id="longitude">
+        </div>
+        <!--
+        <div class="form-group col-md-6">
+          <label for="inputCampusNumber" class="col-form-label">Campus Number(campus number for maps api)</label>
+          <input type="number" name="campusNumber" [(ngModel)]="campus.campusNumber" class="form-control" id="campusNumber">
+        </div>
+      -->
+      </div>
+      <button (click)="addCampus()" type="submit" class="btn btn-primary">Add Campus</button>
+    </form>
+  </div>
+</div>
