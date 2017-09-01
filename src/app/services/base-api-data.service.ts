@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { HotSpot } from '../models/app.models';
 
-const BASE_API_URL : string = 'http://donna-backend.herokuapp.com/api/';
+const BASE_API_URL : string = 'https://donna-backend.herokuapp.com/api/';
 export class BaseAPIDataService {
 
   constructor(private http:Http) { }
