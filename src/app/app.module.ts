@@ -19,6 +19,10 @@ import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { LoginComponent } from './users/login/login.component';
 import { SignupComponent } from './users/signup/signup.component';
 import { TabViewComponent } from './admin/tab-view/tab-view.component';
+import { AddEventComponent } from './admin/add-event/add-event.component';
+import { AddAnnouncementComponent } from './admin/add-announcement/add-announcement.component';
+import { ViewAnnouncementsComponent } from './view-announcements/view-announcements.component';
+import { ViewEventsComponent } from './view-events/view-events.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { TabViewComponent } from './admin/tab-view/tab-view.component';
     ViewUsersComponent,
     LoginComponent,
     SignupComponent,
-    TabViewComponent
+    TabViewComponent,
+    AddEventComponent,
+    AddAnnouncementComponent,
+    ViewAnnouncementsComponent,
+    ViewEventsComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -63,6 +71,12 @@ import { TabViewComponent } from './admin/tab-view/tab-view.component';
       },{
         path: 'list',
         component: ViewLocationsComponent
+      }, {
+        path: 'events',
+        component: ViewEventsComponent
+      }, {
+        path: 'announcements',
+        component: ViewAnnouncementsComponent
       },{
         path: 'admin',
         component: TabViewComponent
