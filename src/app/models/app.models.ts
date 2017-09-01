@@ -41,4 +41,5 @@ export class User {
   lastUpdatedTS : number;
   username : string;
   password: string;
+  locationId: number;
 }

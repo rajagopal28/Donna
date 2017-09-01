@@ -13,6 +13,7 @@ import { LocationDataService } from '../../services/location-data.service';
 export class SignupComponent implements OnInit {
 
   user : User;
+  confirmPassword: string;
   locations: [Location];
 
   constructor(private userService: UserDataService, private locationService: LocationDataService) { }
