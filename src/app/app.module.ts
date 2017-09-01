@@ -18,6 +18,7 @@ import { ViewCampusComponent } from './admin/view-campus/view-campus.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { LoginComponent } from './users/login/login.component';
 import { SignupComponent } from './users/signup/signup.component';
+import { TabViewComponent } from './admin/tab-view/tab-view.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SignupComponent } from './users/signup/signup.component';
     ViewCampusComponent,
     ViewUsersComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    TabViewComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -61,7 +63,10 @@ import { SignupComponent } from './users/signup/signup.component';
       },{
         path: 'list',
         component: ViewLocationsComponent
-      }, {
+      },{
+        path: 'admin',
+        component: TabViewComponent
+      },{
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
