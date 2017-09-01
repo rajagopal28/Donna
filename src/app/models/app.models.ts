@@ -43,3 +43,30 @@ export class User {
   password: string;
   locationId: number;
 }
+
+export class EventParticipant {
+  id: number;
+  eventId: number;
+  participantId: number;
+  participant: User;
+}
+
+export class Event {
+  title: string;
+  description: string;
+  eventStart: number;
+  eventEnd: number;
+  locationId: number;
+  id: number;
+  participants: [EventParticipant];
+}
+
+
+export class Announcement {
+  title: string;
+  description: string;
+  validFrom: number;
+  validTill: number;
+  category: string;
+  id: number;
+}
