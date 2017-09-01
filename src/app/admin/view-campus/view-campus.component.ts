@@ -13,7 +13,7 @@ export class ViewCampusComponent implements OnInit {
   constructor(private locationService: LocationDataService) { }
 
   ngOnInit() {
-    this.locationService.getAllLocations().subscribe(
+    this.locationService.getAllCampus().subscribe(
         response => this.campus = response.items,
         error => console.log(error),
         () => console.log('C0mpleted!')
