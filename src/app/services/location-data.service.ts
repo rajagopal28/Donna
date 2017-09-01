@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 
-import { Location } from '../models/app.models';
+import { Location, Campus } from '../models/app.models';
 
 import { BaseAPIDataService } from './base-api-data.service';
 
@@ -15,7 +15,13 @@ export class LocationDataService extends BaseAPIDataService {
   getAllLocations() {
     return super.getData('locations', {});
   }
+  addLocation(location : Location) {
+    return super.postData('locations', location);
+  }
   getAllCampus() {
     return super.getData('campus', {});
+  }
+  addCampus(campus : Campus) {
+    return super.postData('campus', campus);
   }
 }
