@@ -4,10 +4,10 @@ import { User } from '../../models/app.models';
 import { UserDataService } from '../../services/user-data.service';
 
 @Component({
-  selector: 'app-view-users',
+  selector: 'ViewUsers',
   templateUrl: './view-users.component.html',
   styleUrls: ['./view-users.component.css'],
-  providers: [UserDataService],
+  providers: [UserDataService]
 })
 export class ViewUsersComponent implements OnInit {
   users: [User];

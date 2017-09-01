@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LocationDataService} from '../../services/location-data.service'
 import {Location} from '../../models/app.models'
 @Component({
-  selector: 'app-view-locations',
+  selector: 'ViewLocations',
   templateUrl: './view-locations.component.html',
   styleUrls: ['./view-locations.component.css'],
   providers: [LocationDataService]

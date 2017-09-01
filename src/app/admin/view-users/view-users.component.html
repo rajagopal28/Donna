@@ -1,20 +1,12 @@
-<div class="card">
-  <div class="card-header">
-    <span class="h3">
-      Users
-      </span>
+  <h2>Users List</h2>
+  <div class="list-group">
+    <a href="#" *ngFor="let user of users" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{user.firstName}} {{user.lastName}}</h5>
+        <button class="btn btn-primary">Delete</button>
+      </div>
+      <small><strong>ID:</strong>{{user.id}}</small>
+      <small><strong>UserName:</strong>{{user.username}}</small>
+      <small><strong>Joined On:</strong>{{user.createdTS}}</small>
+    </a>
   </div>
-  <div class="card-block">
-    <div class="list-group">
-      <a href="#" *ngFor="let user of users" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{user.firstName}} {{user.lastName}}</h5>
-          <button class="btn btn-primary">Delete</button>
-        </div>
-        <small><strong>ID:</strong>{{user.id}}</small>
-        <small><strong>UserName:</strong>{{user.username}}</small>
-        <small><strong>Joined On:</strong>{{user.createdTS}}</small>
-      </a>
-    </div>
-  </div>
-</div>
