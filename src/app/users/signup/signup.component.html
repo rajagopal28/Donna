@@ -8,15 +8,15 @@
     <form>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputCity" class="col-form-label">First Name</label>
+          <label for="firstName" class="col-form-label">First Name</label>
           <input type="text" name="firstName" [(ngModel)]="user.firstName" class="form-control" id="firstName">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputLastName" class="col-form-label">Last Name</label>
+          <label for="lastName" class="col-form-label">Last Name</label>
           <input type="text" name="lastName" [(ngModel)]="user.lastName" class="form-control" id="lastName">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputLocation" class="col-form-label">Location</label>
+          <label for="locationId" class="col-form-label">Location</label>
           <select id="locationId" [(ngModel)]="user.locationId" name="locationId"  class="form-control">
             <option>Choose Location</option>
             <<option *ngFor="let location of locations" value="{{location.id}}">{{location.name}}</option>
@@ -25,11 +25,11 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputUsername4" class="col-form-label">Username</label>
+          <label for="username" class="col-form-label">Username</label>
           <input type="text" name="username" [(ngModel)]="user.username" class="form-control" id="username" placeholder="Username">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputPassword4"  class="col-form-label">Password</label>
+          <label for="password"  class="col-form-label">Password</label>
           <input type="password" class="form-control" [(ngModel)]="user.password" name="password" id="password" placeholder="Password">
         </div>
         <div class="form-group col-md-6">
