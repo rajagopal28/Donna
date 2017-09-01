@@ -1,0 +1,22 @@
+
+<div class="card">
+  <div class="card-header">
+    <span class="h3">
+        Announcements
+      </span>
+  </div>
+  <div class="card-block">
+    <div class="list-group">
+      <a href="#" *ngFor="let item of announcements" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{item.title}}</h5>
+          <p class="list-group-item-text">{{item.description}}</p>
+          <button class="btn btn-primary">Delete</button>
+        </div>
+        <small><strong>ID:</strong>{{item.id}}</small>
+        <small><strong>Valid from:</strong>{{item.validFrom}}</small>
+        <small><strong>Valid till:</strong>{{item.validTill}}</small>
+      </a>
+    </div>
+  </div>
+</div>
