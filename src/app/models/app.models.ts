@@ -36,6 +36,7 @@ export class ChatItem {
 
 
 export class User {
+  id: number;
   firstName: string;
   lastName: string;
   createdTS: number;
@@ -60,6 +61,7 @@ export class Event {
   locationId: number;
   id: number;
   participants: [EventParticipant];
+  participantIds: string;
 }
 
 
