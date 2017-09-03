@@ -1,3 +1,37 @@
-<p>
-  add-announcement works!
-</p>
+<div class="card">
+  <div class="card-block">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="title" class="col-form-label">Title</label>
+          <input type="text" name="title" [(ngModel)]="announcement.title" class="form-control" id="title">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="description" class="col-form-label">Description</label>
+          <textarea name="description" [(ngModel)]="announcement.description" class="form-control" id="description">
+          </textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="from" class="col-form-label">Valid From</label>
+          <ngb-datepicker name="from" #dp1 [(ngModel)]="startDate" (navigate)="sDate = $event.next"></ngb-datepicker>
+          <ngb-timepicker name="fromT" [(ngModel)]="startTime"></ngb-timepicker>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="to" class="col-form-label">Valid Till</label>
+          <ngb-datepicker name="to" #dp2 [(ngModel)]="endDate" (navigate)="eDate = $event.next"></ngb-datepicker>
+          <ngb-timepicker name="toT" [(ngModel)]="endTime"></ngb-timepicker>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputCategory" class="col-form-label">Category</label>
+          <select id="category" [(ngModel)]="announcement.category" name="category" class="form-control">
+            <option value="food">Food</option>
+            <option value="meetings">Meetings</option>
+            <option value="celebrations">Celebrations</option>
+            <option value="emergency">Emergency</option>
+          </select>
+        </div>
+      </div>
+      <button (click)="addAnnouncement()" type="submit" class="btn btn-primary">Add Announcement</button>
+    </form>
+  </div>
+</div>
