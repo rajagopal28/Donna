@@ -13,6 +13,11 @@
           <button class="btn btn-primary">Delete</button>
         </div>
         <small><strong>ID:</strong>{{item.id}}</small>
+        <small><strong>Participants</strong>
+          <span *ngFor="let ep of item.participants">
+            {{ep.participant.username}},
+          </span>
+        </small>
         <small><strong>Valid from:</strong>{{item.eventStart}}</small>
         <small><strong>Valid till:</strong>{{item.eventEnd}}</small>
       </a>
