@@ -5,6 +5,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -49,6 +51,8 @@ import { ViewEventsComponent } from './view-events/view-events.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    TagInputModule,
+    BrowserAnimationsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCXNSYiB8v_Vb_a3Z9gH2idT6Z3adg5mAk'
     }),
