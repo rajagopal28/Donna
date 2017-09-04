@@ -16,6 +16,7 @@ export class Campus {
   longitude: number;
   name: string;
   id: number;
+  campusNumber : number;
   locations : [Location];
 }
 
