@@ -73,6 +73,9 @@ import { ViewEventsComponent } from './view-events/view-events.component';
         path: 'signup',
         component: SignupComponent
       },{
+        path: 'login',
+        component: LoginComponent
+      },{
         path: 'list',
         component: ViewLocationsComponent
       }, {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {ChoresDataService} from '../services/chores-data.service';
+import { SessionService } from '../services/session-service';
 
 import {Event} from '../models/app.models';
 
@@ -13,9 +14,10 @@ import {Event} from '../models/app.models';
 export class ViewEventsComponent implements OnInit {
 
     events : [Event];
-    constructor(private choresService: ChoresDataService) { }
+    constructor(private choresService: ChoresDataService, protected sessionService: SessionService) { }
 
     ngOnInit() {
+      console.log('is logged in..', this.sessionService.isLoggedIn());
       this.choresService.getEvents().subscribe(
         response => this.events = response.items,
         error => console.log(error),
