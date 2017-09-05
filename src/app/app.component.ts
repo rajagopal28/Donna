@@ -10,5 +10,16 @@ import { SessionService } from './services/session-service';
 })
 export class AppComponent {
   title = 'Donna';
-  constructor(protected sessionService: SessionService) {}
+  isLoggedIn : boolean = false;
+  constructor(protected sessionService: SessionService) {
+    this.sessionService.authObervable.subscribe(authUser => {
+      console.log('observing...');
+      this.isLoggedIn = (authUser && authUser.id !== null);
+    });
+  }
+  logout() {
+    this.sessionService.clearUser();
+  }
+
+
 }
