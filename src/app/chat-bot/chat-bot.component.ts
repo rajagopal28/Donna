@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiAiClient} from "api-ai-javascript";
 
+
 import { ChatItem } from '../models/app.models';
 import { IndoorLocationDataService } from '../services/indoor-location-data.service';
 const client = new ApiAiClient({accessToken: 'b71bf0851f6f41f8b1728e20c7946c25'})
@@ -47,7 +48,14 @@ export class ChatBotComponent implements OnInit {
      } else {
       this.messages = [cMsg];
      }
-    client.textRequest(message.content)
+    let contexts :[any] = [{
+        name: 'auth',
+        parameters: {
+          'token' : 'hspectre'
+        }
+      }
+    ];
+    client.textRequest(message.content, {contexts: contexts})
        .then((response) => {
         cb(response);
        })
