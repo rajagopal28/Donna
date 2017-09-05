@@ -17,16 +17,19 @@ import { IndoorLocationDataService } from '../services/indoor-location-data.serv
 export class IndoorMapComponent implements OnInit {
   @ViewChild("MapView2") mapView: ElementRef;
 
-    lat: number = 12.9051301;
-    lng: number = 80.2260227;
+    lat: number = 51.556021;
+    lng: number = -0.279519;
     routeText: string = '';
     zoom: number = 17;
     bearing:number = 0;
     tilt:number = 0;
     p: any = {
-      "origin" : "12.9033372,80.2252904",
-      "destination" : "12.9094935,80.2250325"
+      "origin" : "51.555361,-0.280656",
+      "destination" : "51.556049,-0.278078",
+      "mode" : "walking"
     };
+
+
     constructor(
      private hotSpotService: IndoorLocationDataService) {}
 
@@ -58,7 +61,7 @@ export class IndoorMapComponent implements OnInit {
 
       // setup marker
       console.log('setting marker on location');
-      var marker = this.getMarkerFrom(this.lat, this.lng, 'Accenture', 'Shollinganallur');
+      var marker = this.getMarkerFrom(this.lat, this.lng, 'Wembley Stadium', ' London HA9 0WS, UK');
       mapView.addMarker(marker);
       // this.hotSpotService.getRouteText(this.p, (response) => {
       //   console.log('route text');
@@ -69,8 +72,8 @@ export class IndoorMapComponent implements OnInit {
             if(result) {
                 console.log('got android and setting.. Polyline');
                 mapView.addPolyline(result);
-                let src = this.getMarkerFrom(12.9094935,80.2250325, 'Some place 1', 'Some snipp1');
-                let dst = this.getMarkerFrom(12.9033372,80.2252904, 'some place 2','Some snipp2');
+                let src = this.getMarkerFrom(51.555361,-0.280656, 'Some place 1', 'Some snipp1');
+                let dst = this.getMarkerFrom(51.556049,-0.278078, 'some place 2','Some snipp2');
                 mapView.addMarker(src);
                 mapView.addMarker(dst);
                 console.log('Adding src dst marker');
