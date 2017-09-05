@@ -15,8 +15,8 @@ export class ChoresDataService extends BaseAPIDataService {
   addAnnouncement(announcement : Announcement) {
     return super.postData('announcements', announcement);
   }
-   getEvents(){
-     return super.getData('events', {});
+   getEvents(params){
+     return super.getData('events', params);
    }
    addEvent(event : Event) {
      return super.postData('events', event);
