@@ -1,14 +1,14 @@
 <h2>Campus List</h2>
 <div class="list-group">
-  <a href="#" *ngFor="let camp of campus" class="list-group-item list-group-item-action flex-column align-items-start">
+  <div href="#" *ngFor="let camp of campus" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{camp.name}}</h5>
       <a class="btn btn-primary" routerLink="/admin" [queryParams]="{campusId:camp.id}" role="button">View Locations</a>
-      <button class="btn btn-primary">Delete</button>
+      <button class="btn btn-primary" (click)="delete(camp)">Delete</button>
     </div>
     <small><strong>ID:</strong>{{camp.id}}</small>
     <small><strong>Latitude:</strong>{{camp.latitude}}</small>
     <small><strong>Longitude:</strong>{{camp.longitude}}</small>
     <small><strong>Campus Number:</strong>{{camp.campusNumber}}</small>
-  </a>
+  </div>
 </div>

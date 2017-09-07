@@ -20,4 +20,22 @@ export class ViewCampusComponent implements OnInit {
       );
   }
 
+  delete(camp: Campus) {
+    console.log('deleting', camp);
+    if (confirm('Are you sure you want to remove this campus?')) {
+        console.log('Deleting confirmation');
+        this.locationService.deleteCampus(camp).subscribe(
+          response => {
+            console.log(response);
+            let index = this.campus.indexOf(camp);
+            if(index !== -1){
+              this.campus.splice(index, 1);
+            }
+          },
+          error => console.log(error),
+          () => console.log('Completed yahah')
+        );
+    }
+  }
+
 }
