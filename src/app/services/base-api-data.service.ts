@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, URLSearchParams, Response} from '@angular/http';
+import {Http, URLSearchParams, Response, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -35,6 +35,15 @@ export class BaseAPIDataService {
     return this.http.get(BASE_API_URL + path, {
                         search: params
                       }).map(res => res.json())
+                        .catch(this.handleError);
+  }
+
+  deleteData(path:string, paramsMap:any){
+    var options = new RequestOptions({
+        body: JSON.stringify(paramsMap)
+      });
+    console.log(BASE_API_URL + path);
+    return this.http.delete(BASE_API_URL + path, options).map(res => res.json())
                         .catch(this.handleError);
   }
   private handleError(error: Response) {
