@@ -21,5 +21,22 @@ export class ViewUsersComponent implements OnInit {
      () => console.log('Completed!!')
     );
   }
+  delete(user:User) {
+    console.log('deleting', user);
+    if (confirm('Are you sure you want to remove this user?')) {
+        console.log('Deleting confirmation');
+        this.userService.deleteUser(user).subscribe(
+          response => {
+            console.log(response);
+            let index = this.users.indexOf(user);
+            if(index !== -1){
+              this.users.splice(index, 1);
+            }
+          },
+          error => console.log(error),
+          () => console.log('Completed samo')
+        );
+    }
+  }
 
 }
