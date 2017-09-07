@@ -37,7 +37,7 @@ export class AddEventComponent implements OnInit {
 
   ngOnInit() {
     this.event= new Event();
-    this.userService.getAllUsers()
+    this.userService.getAllUsers({})
       .subscribe(response=> this.users = response.items,
        error => console.log(error),
        () => console.log('Completed!!')

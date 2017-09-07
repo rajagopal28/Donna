@@ -26,7 +26,7 @@ export class ViewLocationsComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided
         this.loadLocations(params);
-        this.campusId = params['campusId'];
+        this.campusId = params['campusId'] ? params['campusId'] :  'All Campus';
       });
   }
   loadLocations(params) {

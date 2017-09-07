@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { User } from '../../models/app.models';
 import { UserDataService } from '../../services/user-data.service';
@@ -11,11 +12,24 @@ import { UserDataService } from '../../services/user-data.service';
 })
 export class ViewUsersComponent implements OnInit {
   users: [User];
+  campusId: string;
 
-  constructor(private userService: UserDataService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserDataService) { }
 
   ngOnInit() {
-    this.userService.getAllUsers()
+    this.route
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided
+        this.loadUsers(params);
+        this.campusId = params['campusId'] ? params['campusId'] :  'All Campus';
+      });
+  }
+  loadUsers(params) {
+    this.userService.getAllUsers(params)
     .subscribe(response=> this.users = response.items,
      error => console.log(error),
      () => console.log('Completed!!')

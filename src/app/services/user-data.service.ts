@@ -9,8 +9,8 @@ export class UserDataService extends BaseAPIDataService {
   constructor(http:Http) {
     super(http);
  }
-  getAllUsers(){
-    return super.getData('users', {});
+  getAllUsers(params){
+    return super.getData('users', params);
   }
   addUser(user:User) {
     return super.postData('users', user);
