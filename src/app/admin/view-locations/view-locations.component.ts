@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import {LocationDataService} from '../../services/location-data.service'
 import {Location} from '../../models/app.models'
+
 @Component({
   selector: 'ViewLocations',
   templateUrl: './view-locations.component.html',
@@ -32,7 +33,24 @@ export class ViewLocationsComponent implements OnInit {
     this.locationService.getAllLocations(params).subscribe(
       response => this.locations = response.items,
       error => console.log(error),
-      () => console.log('COmpleted!')
+      () => console.log('COmpleted! Locations')
     );
+  }
+  delete(location:Location) {
+    console.log('deleting', location);
+    if (confirm('Are you sure you want to remove this location?')) {
+        console.log('Deleting confirmation');
+        this.locationService.deleteLocation(location).subscribe(
+          response => {
+            console.log(response);
+            let index = this.locations.indexOf(location);
+            if(index !== -1){
+              this.locations.splice(index, 1);
+            }
+          },
+          error => console.log(error),
+          () => console.log('Completed samo')
+        );
+    }
   }
 }

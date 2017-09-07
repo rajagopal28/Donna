@@ -1,12 +1,12 @@
 <h2>Locations List of {{campusId}}</h2>
 <div class="list-group">
-  <a href="#" *ngFor="let location of locations" class="list-group-item list-group-item-action flex-column align-items-start">
+  <div href="#" *ngFor="let location of locations" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{location.name}}</h5>
-      <button class="btn btn-primary">Delete</button>
+      <button (click)="delete(location);" class="btn btn-primary">Delete</button>
     </div>
     <small><strong>ID:</strong>{{location.id}}</small>
     <small><strong>Latitude:</strong>{{location.latitude}}</small>
     <small><strong>Longitude:</strong>{{location.longitude}}</small>
-  </a>
+  </div>
 </div>
