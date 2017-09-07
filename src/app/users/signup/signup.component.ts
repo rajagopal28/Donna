@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.user = new User();
-    this.locationService.getAllLocations().subscribe(
+    this.locationService.getAllLocations({}).subscribe(
       response => this.locations = response.items,
       error => console.log('Error:', error),
       () => console.log('Completed..')

@@ -42,7 +42,7 @@ export class AddEventComponent implements OnInit {
        error => console.log(error),
        () => console.log('Completed!!')
       );
-    this.locationService.getAllLocations().subscribe(
+    this.locationService.getAllLocations({}).subscribe(
       response => this.locations = response.items,
       error => console.log('Error:', error),
       () => console.log('Completed..')

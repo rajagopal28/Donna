@@ -12,8 +12,8 @@ export class LocationDataService extends BaseAPIDataService {
     super(http);
    }
 
-  getAllLocations() {
-    return super.getData('locations', {});
+  getAllLocations(params) {
+    return super.getData('locations', params);
   }
   addLocation(location : Location) {
     return super.postData('locations', location);

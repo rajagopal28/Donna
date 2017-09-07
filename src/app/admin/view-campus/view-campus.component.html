@@ -3,7 +3,7 @@
   <a href="#" *ngFor="let camp of campus" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{camp.name}}</h5>
-      <button class="btn btn-primary">View Locations</button>
+      <a class="btn btn-primary" routerLink="/admin" [queryParams]="{campusId:camp.id}" role="button">View Locations</a>
       <button class="btn btn-primary">Delete</button>
     </div>
     <small><strong>ID:</strong>{{camp.id}}</small>
