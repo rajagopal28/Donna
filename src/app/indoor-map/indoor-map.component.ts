@@ -6,15 +6,18 @@ import {debounceTime} from 'rxjs/operator/debounceTime';
 import {distinctUntilChanged} from 'rxjs/operator/distinctUntilChanged';
 
 import {IndoorLocationDataService} from '../services/indoor-location-data.service';
+import { LocationDataService } from '../services/location-data.service';
 import { SessionService } from '../services/session-service';
 import { HotSpot } from '../models/app.models';
+
+const DEFAULT_FLOOR_LEVEL : number= 1
 
 declare var Maze:any;
 @Component({
   selector: 'app-indoor-map',
   templateUrl: './indoor-map.component.html',
   styleUrls: ['./indoor-map.component.css'],
-  providers: [IndoorLocationDataService],
+  providers: [LocationDataService, IndoorLocationDataService],
 })
 export class IndoorMapComponent implements OnInit {
 
@@ -23,18 +26,18 @@ toLocation: HotSpot;
 fromLevel : number;
 toLevel: number;
 levels : [number];
+locations: [Location];
 isLoggedIn: boolean = false;
 allLocations: [HotSpot];
+campusNumber: number = 119;
 imap: any;
   constructor(
    private route: ActivatedRoute,
    private router: Router,
+   private locationService : LocationDataService,
    private hotSpotService: IndoorLocationDataService, protected sessionService: SessionService) {}
 
   ngOnInit() {
-    this.sessionService.authObervable.subscribe(authUser => {
-      this.isLoggedIn = this.sessionService.isLoggedIn();
-    });
     this.allLocations = this.hotSpotService.getPoiLocations();
     this.fromLevel = this.toLevel = 1;
     this.levels = this.hotSpotService.getLevels();
@@ -47,14 +50,31 @@ imap: any;
       }
     });
   }
+  loadLocationsFromCampus(campusId){
+    this.locationService.getAllLocations({campusId: campusId}).subscribe(
+      response => this.locations =response.items,
+      error => console.log(error),
+      () => console.log('Locations Loaded')
+    );
+  }
   ngAfterViewInit() {
+    this.sessionService.authObervable.subscribe(authUser => {
+      this.isLoggedIn = this.sessionService.isLoggedIn();
+      if(authUser.location && authUser.location.campus && authUser.location.campus.id) {
+        this.loadLocationsFromCampus(authUser.location.campus.id);
+        this.campusNumber = authUser.location.campus.campusNumber;
+        this.loadMapForCampus(this.campusNumber);
+      }
+    });
+  }
+  loadMapForCampus(campusNumber) {
     this.imap = Maze.map('mazemap-container', { campusloader: false });
     var imap = this.imap;
-    Maze.Instancer.getCampus(119).then((campus) => {
+    Maze.Instancer.getCampus(campusNumber).then((campus) => {
       imap.fitBounds(campus.getBounds());
       this.showPathIfThereAreFromAndTo();
       campus.addTo(imap).setActive().then( function() {
-          imap.setZLevel(1);
+          imap.setZLevel(DEFAULT_FLOOR_LEVEL);
           imap.getZLevelControl().show();
           campus.addPoiCategory(27);    // 27 = bus stops
           });
@@ -99,7 +119,9 @@ imap: any;
       console.log(error);
     });
   }
+
   formatter = (result: HotSpot) => result.name + ' at ' + result.building;
+
   applyNavigation() : void {
     console.log('applying navigation');
     console.log(this.toLocation);
