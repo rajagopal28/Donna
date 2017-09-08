@@ -9,6 +9,8 @@ export class ILocation {
    name: string;
    id: number;
    campusId: number;
+   campus: Campus;
+   floor: number;
 }
 
 export class Campus {
@@ -45,6 +47,7 @@ export class User {
   username : string;
   password: string;
   locationId: number;
+  location: Location;
 }
 
 export class EventParticipant {
