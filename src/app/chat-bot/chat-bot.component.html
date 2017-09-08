@@ -6,6 +6,9 @@
   </div>
   <div class="card-block">
     <div class="panel-body">
+      <ngb-alert [dismissible]="false">
+        <strong>Warning!</strong> You need to login to see contextual data in chat!!
+      </ngb-alert>
         <ul class="chat">
           <li *ngFor="let message of messages" class="right clearfix"><span class="chat-img" [class.pull-right]="message.isSelf" >
               <img src="http://placehold.it/50/FA6F57/fff&amp;text={{message.user}}" alt="User Avatar" class="img-circle"/>

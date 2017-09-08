@@ -5,26 +5,31 @@
       </span>
   </div>
   <div class="card-block">
-    <div class="form-inline">
-      <div class="form-group">
-        <label for="from">From Location:</label>
-        <input type="text" class="form-control" id="from" [(ngModel)]="fromLocation" [ngbTypeahead]="searchFrom" [resultTemplate]="rt" [inputFormatter]="formatter" >
-        &nbsp;
-        <label for="fromLevel">From Level:</label>
-        <select class="form-control" id="fromLevel" [(ngModel)]="fromLevel">
-          <option *ngFor="let l of levels">{{l}}</option>
-        </select>
-      </div>&nbsp;
-      <div class="form-group">
-        <label for="to">To Location:</label>
-        <input type="text" class="form-control" id="to" [(ngModel)]="toLocation" [ngbTypeahead]="searchTo" [resultTemplate]="rt" [inputFormatter]="formatter" >
-        &nbsp;
-        <label for="toLevel">To Level:</label>
-        <select class="form-control" id="toLevel" [(ngModel)]="toLevel">
-          <option *ngFor="let l of levels">{{l}}</option>
-        </select>
+    <ngb-alert *ngIf="!isLoggedIn" [dismissible]="false">
+      <strong>Warning!</strong> You need to login to navigate between locations!!
+    </ngb-alert>
+    <div *ngIf="isLoggedIn">
+      <div class="form-inline">
+        <div class="form-group">
+          <label for="from">From Location:</label>
+          <input type="text" class="form-control" id="from" [(ngModel)]="fromLocation" [ngbTypeahead]="searchFrom" [resultTemplate]="rt" [inputFormatter]="formatter" >
+          &nbsp;
+          <label for="fromLevel">From Level:</label>
+          <select class="form-control" id="fromLevel" [(ngModel)]="fromLevel">
+            <option *ngFor="let l of levels">{{l}}</option>
+          </select>
         </div>&nbsp;
-      <button (click)="applyNavigation()" class="btn btn-default">Submit</button>
+        <div class="form-group">
+          <label for="to">To Location:</label>
+          <input type="text" class="form-control" id="to" [(ngModel)]="toLocation" [ngbTypeahead]="searchTo" [resultTemplate]="rt" [inputFormatter]="formatter" >
+          &nbsp;
+          <label for="toLevel">To Level:</label>
+          <select class="form-control" id="toLevel" [(ngModel)]="toLevel">
+            <option *ngFor="let l of levels">{{l}}</option>
+          </select>
+          </div>&nbsp;
+        <button (click)="applyNavigation()" class="btn btn-default">Submit</button>
+      </div>
     </div>
     <div id="mazemap-container"></div>
   </div>

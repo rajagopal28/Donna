@@ -6,6 +6,7 @@ import {debounceTime} from 'rxjs/operator/debounceTime';
 import {distinctUntilChanged} from 'rxjs/operator/distinctUntilChanged';
 
 import {IndoorLocationDataService} from '../services/indoor-location-data.service';
+import { SessionService } from '../services/session-service';
 import { HotSpot } from '../models/app.models';
 
 declare var Maze:any;
@@ -22,14 +23,18 @@ toLocation: HotSpot;
 fromLevel : number;
 toLevel: number;
 levels : [number];
+isLoggedIn: boolean = false;
 allLocations: [HotSpot];
 imap: any;
   constructor(
    private route: ActivatedRoute,
    private router: Router,
-   private hotSpotService: IndoorLocationDataService) {}
+   private hotSpotService: IndoorLocationDataService, protected sessionService: SessionService) {}
 
   ngOnInit() {
+    this.sessionService.authObervable.subscribe(authUser => {
+      this.isLoggedIn = this.sessionService.isLoggedIn();
+    });
     this.allLocations = this.hotSpotService.getPoiLocations();
     this.fromLevel = this.toLevel = 1;
     this.levels = this.hotSpotService.getLevels();
@@ -39,7 +44,7 @@ imap: any;
         let toPos = params['toLocationPosition'] - 1 ;
         this.fromLocation =  this.allLocations[fromPos];
         this.toLocation =  this.allLocations[toPos];
-      }      
+      }
     });
   }
   ngAfterViewInit() {
