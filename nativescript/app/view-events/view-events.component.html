@@ -1,0 +1,14 @@
+<StackLayout>
+  <Label text="Events Of {{userInfo}}"></Label>
+  <ListView [items]="events" (itemTap)="onItemTap($event)" class="list-group">
+      <ng-template let-event="item" let-i="index" let-odd="odd" let-even="even">
+          <StackLayout [class.odd]="odd" [class.even]="even" class="list-group-item">
+              <Label [text]='"Title: " +event.title'></Label>
+              <Label [text]='"Description: "+ event.description' textWrap="true" class="title"></Label>
+              <Label [text]='"Event Start: "+ event.eventStart' class="date"></Label>
+              <Label [text]='"Event End: "+ event.eventEnd' class="date"></Label>
+              <StackLayout height="2" backgroundColor="Black"></StackLayout>
+          </StackLayout>
+      </ng-template>
+  </ListView>
+</StackLayout>

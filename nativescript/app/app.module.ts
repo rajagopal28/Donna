@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { IndoorMapComponent } from './indoor-map/indoor-map.component';
 import { ViewAnnouncementsComponent } from './view-announcements/view-announcements.component';
+import { ViewEventsComponent } from './view-events/view-events.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 
 export const routes = [
@@ -23,7 +24,7 @@ export const routes = [
 @NgModule({
   declarations: [AppComponent, HomeComponent,
      ChatBotComponent, IndoorMapComponent,
-     ViewAnnouncementsComponent, LoginModalComponent,
+     ViewAnnouncementsComponent, LoginModalComponent, ViewEventsComponent,
     TabbedHomeComponent, TabbedDroneComponent],
   entryComponents: [LoginModalComponent],
   bootstrap: [AppComponent],

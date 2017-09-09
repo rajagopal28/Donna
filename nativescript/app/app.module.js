@@ -13,6 +13,7 @@ var home_component_1 = require("./home/home.component");
 var chat_bot_component_1 = require("./chat-bot/chat-bot.component");
 var indoor_map_component_1 = require("./indoor-map/indoor-map.component");
 var view_announcements_component_1 = require("./view-announcements/view-announcements.component");
+var view_events_component_1 = require("./view-events/view-events.component");
 var login_modal_component_1 = require("./login-modal/login-modal.component");
 exports.routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -28,7 +29,7 @@ AppModule = __decorate([
     core_1.NgModule({
         declarations: [app_component_1.AppComponent, home_component_1.HomeComponent,
             chat_bot_component_1.ChatBotComponent, indoor_map_component_1.IndoorMapComponent,
-            view_announcements_component_1.ViewAnnouncementsComponent, login_modal_component_1.LoginModalComponent,
+            view_announcements_component_1.ViewAnnouncementsComponent, login_modal_component_1.LoginModalComponent, view_events_component_1.ViewEventsComponent,
             tabbed_home_component_1.TabbedHomeComponent, tabbed_drone_component_1.TabbedDroneComponent],
         entryComponents: [login_modal_component_1.LoginModalComponent],
         bootstrap: [app_component_1.AppComponent],
