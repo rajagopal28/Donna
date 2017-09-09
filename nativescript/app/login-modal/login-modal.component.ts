@@ -19,6 +19,7 @@ export class LoginModalComponent {
       password: "",
       success: false
     }
+    console.log(JSON.stringify(params))
   }
   public cancel() {
     this.params.closeCallback({success: false});
