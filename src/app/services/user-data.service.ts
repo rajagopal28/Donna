@@ -16,7 +16,7 @@ export class UserDataService extends BaseAPIDataService {
     return super.postData('users', user);
   }
   deleteUser(user:User) {
-    return super.deleteData('users\\'+user.id, {});
+    return super.deleteData('users/'+user.id, {});
   }
   authenticate(username: string, password: string) {
     return super.postData('users/login', {username: username, password: password});
