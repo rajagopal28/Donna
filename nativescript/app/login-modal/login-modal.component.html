@@ -1,0 +1,7 @@
+<StackLayout class="p-20">
+    <Label text="Username" class="h1 text-center"></Label>
+    <TextField required hint="Username" [(ngModel)]="input.username" autocorrect="false" autocapitalizationType="none"></TextField>
+    <TextField required hint="Password" [(ngModel)]="input.password" secure="true" autocorrect="false"  autocapitalizationType="none"></TextField>
+    <Button text="Login" (tap)="ok()" class="btn btn-primary"></Button>
+    <Button text="Cancel" (tap)="cancel()" class="btn btn-primary"></Button>
+</StackLayout>
