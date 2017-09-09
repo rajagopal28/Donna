@@ -6,10 +6,10 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from './home/home.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { IndoorMapComponent } from './indoor-map/indoor-map.component';
-import { GoogleIndoorComponent } from './google-indoor/google-indoor.component';
+import { ViewAnnouncementsComponent } from './view-announcements/view-announcements.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ChatBotComponent, IndoorMapComponent, GoogleIndoorComponent],
+  declarations: [AppComponent, HomeComponent, ChatBotComponent, IndoorMapComponent, ViewAnnouncementsComponent],
   bootstrap: [AppComponent],
   imports: [NativeScriptModule, NativeScriptHttpModule],
   schemas: [NO_ERRORS_SCHEMA],
