@@ -18,9 +18,10 @@ import { ChooseLocationModalComponent } from './choose-location-modal/choose-loc
 import { NavigationInputComponent } from './navigation-input/navigation-input.component';
 
 export const routes = [
-  { path: "", redirectTo: "/drone", pathMatch: "full" },
+  { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: TabbedHomeComponent },
-  { path: "drone", component: TabbedDroneComponent }
+  { path: "drone", component: TabbedDroneComponent },
+  { path: "navigation", component: IndoorMapComponent }
 ];
 
 @NgModule({

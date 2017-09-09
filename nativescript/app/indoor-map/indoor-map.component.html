@@ -1,7 +1,16 @@
-<HtmlView [html]="routeText" ></HtmlView>
-<MapView2 [latitude]="lat" [longitude]="lng"
-[zoom]="zoom" [bearing]="bearing"
-[tilt]="tilt" (mapReady)="OnMapReady($event)"
-(markerSelect)="onMarkerSelect"
-(cameraChanged)="onCameraChanged">
-</MapView2>
+<ActionBar title="Navigation" class="action-bar">
+  <NavigationButton  (tap)="goBackPage()"  ios.systemIcon="1" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+<TabView [(ngModel)]="tabSelectedIndex" selectedColor="#FF0000" iosIconRenderingMode="alwaysOriginal" sdkToggleNavButton>
+  <StackLayout *tabItem="{title: 'Maps'}">
+    <MapView [latitude]="lat" [longitude]="lng"
+      [zoom]="zoom" [bearing]="bearing"
+      [tilt]="tilt" (mapReady)="OnMapReady($event)"
+      (markerSelect)="onMarkerSelect"
+      (cameraChanged)="onCameraChanged">
+    </MapView>
+  </StackLayout>
+  <StackLayout *tabItem="{title: 'Routes'}">
+    <HtmlView [html]="routeText" ></HtmlView>
+  </StackLayout>
+</TabView>

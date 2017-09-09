@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Color } from "tns-core-modules/color";
-
+import {ActivatedRoute} from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import {registerElement} from 'nativescript-angular/element-registry';
 
 import { Polyline, Marker, Position } from "nativescript-google-maps-sdk";
 
 var mapsModule = require("nativescript-google-maps-sdk");
 
-registerElement("MapView2", () => mapsModule.MapView);
+registerElement("MapView", () => mapsModule.MapView);
 import { IndoorLocationDataService } from '../services/indoor-location-data.service';
 @Component({
     selector: 'IndoorMap',
@@ -15,7 +16,7 @@ import { IndoorLocationDataService } from '../services/indoor-location-data.serv
     providers: [IndoorLocationDataService]
 })
 export class IndoorMapComponent implements OnInit {
-  @ViewChild("MapView2") mapView: ElementRef;
+  @ViewChild("MapView") mapView: ElementRef;
 
     lat: number = 51.556021;
     lng: number = -0.279519;
@@ -31,12 +32,16 @@ export class IndoorMapComponent implements OnInit {
 
 
     constructor(
-     private hotSpotService: IndoorLocationDataService) {}
+     private hotSpotService: IndoorLocationDataService,
+     private route: ActivatedRoute,
+     private routerExtensions: RouterExtensions,) {}
 
     ngAfterViewInit() {
     }
     ngOnInit() {
-
+      this.route.queryParams.subscribe(params => {
+            console.log(JSON.stringify(params));
+        });
     }
     getDirections(arg, cb) {
       console.log('getting directions', arg);
@@ -92,5 +97,8 @@ export class IndoorMapComponent implements OnInit {
        marker.snippet = snippet;
        marker.userData = { index : 1};
        return marker;
+    }
+    public goBackPage() {
+        this.routerExtensions.backToPreviousPage();
     }
 }
