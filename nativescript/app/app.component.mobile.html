@@ -1,15 +1,1 @@
-<ActionBar [title]="title" class="action-bar"></ActionBar>
-<TabView [(ngModel)]="tabSelectedIndex" selectedColor="#FF0000" iosIconRenderingMode="alwaysOriginal" sdkToggleNavButton>
-    <StackLayout *tabItem="{title: 'Home'}">
-      <Home (showSignin)="showLoginModal($event)"></Home>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'ChatBot'}" >
-        <ChatBot></ChatBot>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Maps'}">
-        <IndoorMap></IndoorMap>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Announcements'}">
-        <ViewAnnouncements></ViewAnnouncements>
-    </StackLayout>
-</TabView>
+<page-router-outlet></page-router-outlet>

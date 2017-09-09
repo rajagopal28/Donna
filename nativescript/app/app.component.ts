@@ -16,10 +16,8 @@ import { LoginModalComponent } from "./login-modal/login-modal.component";
 })
 export class AppComponent {
     title = 'Donna';
-    public tabSelectedIndex: number;
 
     constructor(private modal: ModalDialogService, private vcRef: ViewContainerRef) {
-        this.tabSelectedIndex = 1;
         console.log('Varuthaa...With Maps');
     }
 
