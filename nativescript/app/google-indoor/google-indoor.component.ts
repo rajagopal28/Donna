@@ -1,16 +1,16 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
-import {registerElement} from 'nativescript-angular/element-registry'; 
+import {registerElement} from 'nativescript-angular/element-registry';
 
 var geolocation = require("nativescript-geolocation");
 var mapsModule = require("nativescript-google-maps-sdk");
 
-registerElement("MapView", () => mapsModule.MapView);
+registerElement("MapView3", () => mapsModule.MapView);
 @Component({
   selector: 'GoogleIndoor',
   templateUrl: './google-indoor/google-indoor.component.html'
 })
 export class GoogleIndoorComponent implements OnInit {
-  @ViewChild("MapView") mapView: ElementRef;
+  @ViewChild("MapView3") mapView: ElementRef;
 
   lat: number = 51.5561892;
   lng: number = -0.2799979;
@@ -23,7 +23,7 @@ export class GoogleIndoorComponent implements OnInit {
   ngOnInit() {
     console.log('inside maps...');
   }
-  
+
   OnMapReady(args) {
     console.log('Maps ready da...');
     var mapView = args.object;
