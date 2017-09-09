@@ -14,25 +14,29 @@ import { IndoorMapComponent } from './indoor-map/indoor-map.component';
 import { ViewAnnouncementsComponent } from './view-announcements/view-announcements.component';
 import { ViewEventsComponent } from './view-events/view-events.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+import { ChooseLocationModalComponent } from './choose-location-modal/choose-location-modal.component';
+import { NavigationInputComponent } from './navigation-input/navigation-input.component';
 
 export const routes = [
-    { path: "", redirectTo: "/home", pathMatch: "full" },
-    { path: "home", component: TabbedHomeComponent },
-    { path: "drone", component: TabbedDroneComponent }
+  { path: "", redirectTo: "/drone", pathMatch: "full" },
+  { path: "home", component: TabbedHomeComponent },
+  { path: "drone", component: TabbedDroneComponent }
 ];
 
 @NgModule({
   declarations: [AppComponent, HomeComponent,
-     ChatBotComponent, IndoorMapComponent,
-     ViewAnnouncementsComponent, LoginModalComponent, ViewEventsComponent,
-    TabbedHomeComponent, TabbedDroneComponent],
-  entryComponents: [LoginModalComponent],
+    ChatBotComponent, IndoorMapComponent,
+    ViewAnnouncementsComponent, ViewEventsComponent,
+    LoginModalComponent, ChooseLocationModalComponent,
+    TabbedHomeComponent, TabbedDroneComponent,
+    NavigationInputComponent],
+  entryComponents: [LoginModalComponent, ChooseLocationModalComponent],
   bootstrap: [AppComponent],
   imports: [NativeScriptModule, NativeScriptHttpModule,
-        NativeScriptFormsModule,
-        NativeScriptRouterModule,
-        NativeScriptRouterModule.forRoot(routes)],
+    NativeScriptFormsModule,
+    NativeScriptRouterModule,
+    NativeScriptRouterModule.forRoot(routes)],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [ModalDialogService]
 })
-export class AppModule {}
+export class AppModule { }
