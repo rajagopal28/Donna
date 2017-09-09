@@ -1,0 +1,11 @@
+<ActionBar [title]="title" class="action-bar">
+  <NavigationButton  (tap)="goBackPage()"  ios.systemIcon="1" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+<TabView [(ngModel)]="tabSelectedIndex" selectedColor="#FF0000" iosIconRenderingMode="alwaysOriginal" sdkToggleNavButton>
+  <StackLayout *tabItem="{title: 'ChatBot'}" >
+      <ChatBot  (showSignin)="showLoginModal($event)"></ChatBot>
+  </StackLayout>
+  <StackLayout *tabItem="{title: 'Maps'}">
+      <IndoorMap></IndoorMap>
+  </StackLayout>
+</TabView>
