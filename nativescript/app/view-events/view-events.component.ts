@@ -24,16 +24,20 @@ export class ViewEventsComponent implements OnInit {
         userName = authUser.firstName + ' ' + authUser.lastName;
       }
       this.userInfo = userName;
+      this.loadEvents();
     });
   }
-
-  ngOnInit() {
+  loadEvents(){
     console.log('is logged in..', this.sessionService.isLoggedIn());
     this.choresService.getEvents(this.eventParam).subscribe(
       response => this.events = response.items,
       error => console.log(error),
       () => console.log('C0mpleted!')
     );
+  }
+
+  ngOnInit() {
+
   }
 
 }

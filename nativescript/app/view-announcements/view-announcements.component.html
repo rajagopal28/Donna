@@ -5,9 +5,9 @@
           <StackLayout [class.odd]="odd" [class.even]="even" class="list-group-item">
               <Label [text]='"Title: " +announcement.title'></Label>
               <Label [text]='"Description: "+ announcement.description' textWrap="true" class="title"></Label>
-              <Label [text]='"Category: "+ announcement.category' textWrap="true" class="description"></Label>
-              <Label [text]='"ValidFrom: "+ announcement.validFrom' textWrap="true" class="date"></Label>
-              <Label [text]='"ValidTill: "+ announcement.validTill' textWrap="true" class="date"></Label>
+              <Label [text]='"Category: "+ announcement.category' class="description"></Label>
+              <Label [text]='"ValidFrom: "+ announcement.validFrom' class="date"></Label>
+              <Label [text]='"ValidTill: "+ announcement.validTill' class="date"></Label>
               <StackLayout height="2" backgroundColor="Black"></StackLayout>
           </StackLayout>
       </ng-template>
