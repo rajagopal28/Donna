@@ -1,15 +1,13 @@
-import { Component } from "@angular/core";
+import { Component, ViewContainerRef  } from "@angular/core";
 import { StackLayout } from "ui/layouts/stack-layout";
 import { TabView, SelectedIndexChangedEventData, TabViewItem } from "ui/tab-view";
+import { ModalDialogService } from "nativescript-angular/modal-dialog";
 
 import { HomeComponent } from './home/home.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { IndoorMapComponent } from './indoor-map/indoor-map.component';
 import { GoogleIndoorComponent } from './google-indoor/google-indoor.component';
-
-export class DataItem {
-    constructor(public itemDesc: string) {}
-}
+import { LoginModalComponent } from "./login-modal/login-modal.component";
 
 @Component({
   selector: 'app-root',
@@ -18,15 +16,24 @@ export class DataItem {
 })
 export class AppComponent {
     title = 'Donna';
-    public items: Array<DataItem>;
     public tabSelectedIndex: number;
 
-    constructor() {
+    constructor(private modal: ModalDialogService, private vcRef: ViewContainerRef) {
         this.tabSelectedIndex = 1;
-        this.items = new Array<DataItem>();
-        for (let i = 0; i < 5; i++) {
-            this.items.push(new DataItem("item " + i*10));
-        }
         console.log('Varuthaa...With Maps');
+    }
+
+    public showLoginModal() {
+        let options = {
+            context: {},
+            fullscreen: true,
+            viewContainerRef: this.vcRef
+        };
+        this.modal.showModal(LoginModalComponent, options).then(res => {
+            if(res && res.success) {
+              // call login and set session
+              console.log('Ok Clicked...');
+            }
+        });
     }
 }
