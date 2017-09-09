@@ -36,4 +36,7 @@ export class TabbedDroneComponent {
     public goBackPage() {
         this.routerExtensions.backToPreviousPage();
     }
+    public logout() {
+      console.log('Logging out...');
+    }
 }

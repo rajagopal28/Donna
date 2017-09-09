@@ -1,4 +1,7 @@
 <ActionBar [title]="title" class="action-bar">
+  <ActionItem (tap)="logout()"
+      ios.systemIcon="9" ios.position="right"
+      android.systemIcon="ic_menu_close_clear_cancel" android.position="actionBar"></ActionItem>
   <NavigationButton  (tap)="goBackPage()"  ios.systemIcon="1" android.systemIcon="ic_menu_back"></NavigationButton>
 </ActionBar>
 <TabView [(ngModel)]="tabSelectedIndex" selectedColor="#FF0000" iosIconRenderingMode="alwaysOriginal" sdkToggleNavButton>
