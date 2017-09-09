@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, URLSearchParams, Response, RequestOptions} from '@angular/http';
+import {Http, URLSearchParams, Response, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -12,13 +12,22 @@ export class BaseAPIDataService {
   constructor(private http:Http) { }
 
   postData(path:string, form:any) {
-    let body = new FormData();
+    let  headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    let options = new RequestOptions({
+      headers: headers
+    });
+    let body = '';
     for( var key in form) {
       if(form.hasOwnProperty(key)) {
-        body.append(key, form[key]);
+        if(body!== '') {
+          body += '&';
+        }
+        body+= key+ '=' +form[key];
       }
     }
-    return this.http.post(BASE_API_URL + path, body)
+    return this.http.post(BASE_API_URL + path, body, options)
                     .map(res=> res.json()).catch(this.handleError);
   }
 
