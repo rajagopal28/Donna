@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewContainerRef} from '@angular/core';
 import { ModalDialogService } from "nativescript-angular/modal-dialog";
+import {Router, NavigationExtras} from "@angular/router";
+
 
 import { SessionService } from '../services/session-service';
 import { LocationDataService } from '../services/location-data.service';
@@ -19,9 +21,10 @@ export class NavigationInputComponent implements OnInit {
   toLocation: Location;
 
   constructor(private modal: ModalDialogService,
-     private vcRef: ViewContainerRef,
-     protected sessionService: SessionService,
-    private locationService : LocationDataService) {
+    private vcRef: ViewContainerRef,
+    protected sessionService: SessionService,
+    private locationService : LocationDataService,
+    private router: Router) {
       this.fromLocation = this.toLocation = new Location();
   }
   ngOnInit() {
@@ -66,6 +69,14 @@ export class NavigationInputComponent implements OnInit {
     console.log('Submitting Navigation...');
     console.log('FromLocation:' + JSON.stringify(this.fromLocation));
     console.log('ToLocation:' + JSON.stringify(this.toLocation));
+    if(this.fromLocation.name && this.toLocation.name) {
+      let navigationExtras: NavigationExtras = {
+        queryParams : {
+                "fromLocationId": this.fromLocation.id,
+                "toLocationId": this.toLocation.id
+      }};
+      this.router.navigate(['navigation'], navigationExtras);
+    }
   }
 
   loadLocationsFromCampus(campusId) {
