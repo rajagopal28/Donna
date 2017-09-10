@@ -7,7 +7,7 @@ import { ApiAiClient } from "api-ai-javascript";
 import { ChatItem } from '../models/app.models';
 import { SessionService } from '../services/session-service';
 
-const client = new ApiAiClient({ accessToken: 'YOUR KEY' })
+const client = new ApiAiClient({ accessToken: 'b71bf0851f6f41f8b1728e20c7946c25' })
 
 @Component({
   selector: 'ChatBot',
@@ -46,7 +46,10 @@ export class ChatBotComponent implements OnInit {
   addMessage(response, user) {
     var result: ChatItem = { isNavigation: false, content: '', isSelf: false, user: user, timestamp: new Date(), meta: {} };
     let isNavigation = (response.result.action === 'route-to-location-request');
-    let parameters = response.result.parameters;
+    let parameters = {};
+    if(response.result.fulfillment.data && response.result.fulfillment.data.web && response.result.fulfillment.data.web.parameters) {
+      parameters = response.result.fulfillment.data.web.parameters;
+    }
     result.content = response.result.fulfillment.speech;
     this.messages.push(result);
     if (isNavigation) {
@@ -54,6 +57,7 @@ export class ChatBotComponent implements OnInit {
       console.log('Parmeters from chat...' + JSON.stringify(parameters));
       meta.fromLocationId = parameters['fromLocation'] ? parameters['fromLocation'].id : -1;
       meta.toLocationId = parameters['toLocation'] ? parameters['toLocation'].id : -1;
+      meta.campusId =parameters['toLocation'] ? parameters['toLocation'].campusId : -1;
       var navResult: ChatItem = { isNavigation: true, content: '', isSelf: false, user: user, timestamp: new Date(), meta: meta };
       this.messages.push(navResult);
     }
@@ -99,7 +103,8 @@ export class ChatBotComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams : {
           "fromLocationId": item.meta.fromLocationId,
-          "toLocationId": item.meta.toLocationId
+          "toLocationId": item.meta.toLocationId,
+          "campusId": item.meta.campusId
     }};
     this.router.navigate(['navigation'], navigationExtras);
   }
