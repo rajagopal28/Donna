@@ -1,19 +1,5 @@
 import { Component } from '@angular/core';
-export class ILocation {
-   lat: number;
-   lng: number;
-   z: number;
-}
-export class HotSpot {
-  id: number;
-  name: String;
-  building: String;
-  location: ILocation;
-}
-
-
-
- export class Location {
+export class Location {
    id: number;
    latitude: number;
    longitude: number;
