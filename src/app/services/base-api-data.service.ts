@@ -6,8 +6,6 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 
-import { HotSpot } from '../models/app.models';
-
 const BASE_API_URL : string = 'https://donna-backend.herokuapp.com/api/';
 export class BaseAPIDataService {
 

@@ -1,13 +1,9 @@
-import { Component } from '@angular/core';
-export class ILocation {
-   lat: number;
-   lng: number;
- }
+
  export class Location {
+   id: number;
    latitude: number;
    longitude: number;
    name: string;
-   id: number;
    campusId: number;
    campus: Campus;
    floor: number;
@@ -22,18 +18,12 @@ export class Campus {
   locations : [Location];
 }
 
-export class HotSpot {
-  id: number;
-  name: String;
-  building: String;
-  location: ILocation;
-}
-
 export class ChatItem {
   isNavigation: boolean;
   content: string;
   isSelf: boolean;
   user : string;
+  meta: any;
   timestamp : Date
 }
 
