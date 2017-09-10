@@ -32,20 +32,19 @@ export class IndoorLocationDataService {
   }
   getDirectionWayPointsAndLoadPolyLineOptions(params, cb) {
     console.log('sending params to api...');
-    params["key"] = DIRECTIONS_API_KEY;
     this.getDirectionWayPoints(params, (response) => {
       let routes = response.routes;
       if(routes && routes.length > 0) {
-        console.log('got routes', routes.length);
-        let decodedPathList = this.decodePathLineString(routes[0].overview_polyline.points);
-        console.log('the polyline endoded str', routes[0].overview_polyline.points);
-        console.log('decoded path list =', decodedPathList.length);
-        let polyLineLocations = this.getPolyLineFromWayPoints(decodedPathList);
-        console.log('got locations from string=', polyLineLocations.length);
-        // convert polyLineLocations to polyLine
-        let polyLineOptions = this.getPolylineOptionsFromPostions(polyLineLocations);
-        console.log('received polyline options');
-        cb(polyLineOptions);
+        cb(this.getPolyLineOptionsFromResponse(routes));
+      }
+    });
+  }
+  getDirectionWayPointsAndLoadPolyLineOptionsWithRoute(params, cb) {
+    console.log('sending params to api...');
+    this.getDirectionWayPoints(params, (response) => {
+      let routes = response.routes;
+      if(routes && routes.length > 0) {
+        cb(this.getPolyLineOptionsFromResponse(routes), this.getRouteTextFromReponse(response));
       }
     });
   }
@@ -61,23 +60,37 @@ export class IndoorLocationDataService {
       return polyLineOptions;
   }
   getRouteText(params, cb) {
-    params["key"] = DIRECTIONS_API_KEY;
     this.getDirectionWayPoints(params, (response) =>{
-        var restext = '';
         if(response.routes && response.routes.length >0) {
-          var legsO = response.routes[0].legs;
-          for(var leg =0; leg < legsO.length; leg++ ) {
-            var legO = legsO[leg];
-            var steps = legO.steps;
-            for(var step = 0; step < steps.length; step++) {
-              restext += steps[step].html_instructions;
-            }
-          }
+          cb(this.getRouteTextFromReponse(response));
         }
-        cb(restext);
     });
   }
+  getPolyLineOptionsFromResponse(routes) {
+    console.log('got routes', routes.length);
+    let decodedPathList = this.decodePathLineString(routes[0].overview_polyline.points);
+    console.log('the polyline endoded str', routes[0].overview_polyline.points);
+    console.log('decoded path list =', decodedPathList.length);
+    let polyLineLocations = this.getPolyLineFromWayPoints(decodedPathList);
+    console.log('got locations from string=', polyLineLocations.length);
+    // convert polyLineLocations to polyLine
+    console.log('received polyline options');
+    return this.getPolylineOptionsFromPostions(polyLineLocations);
+  }
+  getRouteTextFromReponse(response) {
+    var legsO = response.routes[0].legs;
+    var restext = '';
+    for(var leg =0; leg < legsO.length; leg++ ) {
+      var legO = legsO[leg];
+      var steps = legO.steps;
+      for(var step = 0; step < steps.length; step++) {
+        restext += steps[step].html_instructions;
+      }
+    }
+    return restext;
+  }
   getDirectionWayPoints(params, cb) {
+    params["key"] = DIRECTIONS_API_KEY;
     this.getDirectionwayPointsAPI(params)
     .subscribe(result => {
         cb(result);
