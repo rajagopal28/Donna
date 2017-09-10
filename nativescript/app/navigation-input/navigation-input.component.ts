@@ -2,7 +2,6 @@ import { Component, OnInit, ViewContainerRef} from '@angular/core';
 import { ModalDialogService } from "nativescript-angular/modal-dialog";
 import {Router, NavigationExtras} from "@angular/router";
 
-
 import { SessionService } from '../services/session-service';
 import { LocationDataService } from '../services/location-data.service';
 import { Location } from '../models/app.models';
@@ -73,7 +72,8 @@ export class NavigationInputComponent implements OnInit {
       let navigationExtras: NavigationExtras = {
         queryParams : {
                 "fromLocationId": this.fromLocation.id,
-                "toLocationId": this.toLocation.id
+                "toLocationId": this.toLocation.id,
+                "campusId" : this.toLocation.campus.id
       }};
       this.router.navigate(['navigation'], navigationExtras);
     }
