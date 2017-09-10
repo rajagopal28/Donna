@@ -20,7 +20,7 @@
                   </div>
                   <p>
                       {{message.content}}
-                      <a *ngIf="message.isNavigation" [routerLink]="['/indoor-map', {fromLocationPosition: fromLocationPosition, toLocationPosition: toLocationPosition }]" >Here</a>
+                      <a *ngIf="message.isNavigation" [routerLink]="['/indoor-map', {fromLocationId: message.meta.fromLocationId, toLocationId: message.meta.toLocationId }]" >Here</a>
                   </p>
               </div>
           </li>
