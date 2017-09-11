@@ -10,7 +10,7 @@ import { LocationDataService } from '../services/location-data.service';
 import { SessionService } from '../services/session-service';
 
 const DEFAULT_FLOOR_LEVEL: number = 1;
-const DEFAULT_CAMPUS_NUMBER: number = 119;
+const DEFAULT_CAMPUS_NUMBER: number = 83;
 
 declare var Maze: any;
 @Component({
@@ -37,7 +37,7 @@ export class IndoorMapComponent implements OnInit {
     // params['fromLocationPosition'] && params['toLocationPosition']
     this.sessionService.authObervable.subscribe(authUser => {
       this.isLoggedIn = this.sessionService.isLoggedIn();
-      if (authUser.location && authUser.location.campus && authUser.location.campus.id) {
+      if (authUser && authUser.location && authUser.location.campus && authUser.location.campus.id) {
         this.campusNumber = authUser.location.campus.campusNumber;
         this.loadLocationsFromCampus(authUser.location.campus.id);
         this.loadMapForCampus(this.campusNumber);
@@ -136,7 +136,7 @@ export class IndoorMapComponent implements OnInit {
       this.navigateBetweenLocations(startLatLng, endLatLng, this.fromLocation.floor, this.toLocation.floor);
     }
   }
-  
+
   isLocationWithString(location: Location, str: string) {
     return (location.name.toLowerCase().indexOf(str.toLowerCase()) !== -1)
               || ( location.campus && location.campus.name.toLowerCase().indexOf(str.toLowerCase()) !== -1)

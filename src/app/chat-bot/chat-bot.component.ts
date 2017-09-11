@@ -4,22 +4,19 @@ import {ApiAiClient} from "api-ai-javascript";
 
 import { SessionService } from '../services/session-service';
 import { ChatItem } from '../models/app.models';
-import { IndoorLocationDataService } from '../services/indoor-location-data.service';
 const client = new ApiAiClient({accessToken: 'b71bf0851f6f41f8b1728e20c7946c25'})
 
 @Component({
   selector: 'app-chat-bot',
   templateUrl: './chat-bot.component.html',
-  styleUrls: ['./chat-bot.component.css'],
-  providers: [IndoorLocationDataService]
+  styleUrls: ['./chat-bot.component.css']
 })
 export class ChatBotComponent implements OnInit {
   messages : [ChatItem];
   newMessage: ChatItem = new ChatItem();
   fromLocationPosition: number;
   toLocationPosition: number;
-  constructor(
-   private hotSpotService: IndoorLocationDataService, protected sessionService: SessionService) {}
+  constructor(protected sessionService: SessionService) {}
 
   ngOnInit() {
     let _self = this;
@@ -34,10 +31,10 @@ export class ChatBotComponent implements OnInit {
       var result : ChatItem = {isNavigation: false, content: '', isSelf: false, user : user, timestamp : new Date(), meta : meta};
       result.isNavigation = response.result.action === 'route-to-location-request';
       result.content= response.result.fulfillment.speech;
-      if(result.isNavigation && response.result.data
-          && response.result.data.web
-          && response.result.data.web.parameters ) {
-        let parameters = response.result.data.web.parameters;
+      if(result.isNavigation && response.result.fulfillment.data
+          && response.result.fulfillment.data.web
+          && response.result.fulfillment.data.web.parameters ) {
+        let parameters = response.result.fulfillment.data.web.parameters;
         meta.fromLocationId = parameters.fromLocation? parameters.fromLocation.id : -1;
         meta.toLocationId = parameters.toLocation? parameters.toLocation.id : -1;
         if (meta.toLocationId !== -1) {
