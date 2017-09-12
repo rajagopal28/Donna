@@ -8,6 +8,6 @@
       <small><strong>ID:</strong>{{user.id}}</small>
       <small *ngIf="user.location"><strong>Location ID:</strong>{{user.location?.id}}</small>
       <small><strong>UserName:</strong>{{user.username}}</small>
-      <small><strong>Joined On:</strong>{{user.createdTS}}</small>
+      <small><strong>Joined On:</strong>{{user.createdTS | dateformatter}}</small>
     </div>
   </div>

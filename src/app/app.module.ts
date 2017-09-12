@@ -25,6 +25,7 @@ import { AddEventComponent } from './admin/add-event/add-event.component';
 import { AddAnnouncementComponent } from './admin/add-announcement/add-announcement.component';
 import { ViewAnnouncementsComponent } from './view-announcements/view-announcements.component';
 import { ViewEventsComponent } from './view-events/view-events.component';
+import { DateFormatterPipe} from './models/app.models';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ViewEventsComponent } from './view-events/view-events.component';
     AddEventComponent,
     AddAnnouncementComponent,
     ViewAnnouncementsComponent,
-    ViewEventsComponent
+    ViewEventsComponent,
+    DateFormatterPipe
   ],
   imports: [
     NgbModule.forRoot(),

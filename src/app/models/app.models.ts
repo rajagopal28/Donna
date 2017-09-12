@@ -1,3 +1,4 @@
+import { Pipe, PipeTransform } from '@angular/core';
 
  export class Location {
    id: number;
@@ -66,4 +67,45 @@ export class Announcement {
   validTill: number;
   category: string;
   id: number;
+}
+
+
+@Pipe({
+  name: 'dateformatter'
+})
+export class DateFormatterPipe implements PipeTransform {
+  private monthNames :[string] = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+  transform(timestamp: number): string {
+    let DATE_SEPERATOR : string = '-';
+    let TIME_SEPERATOR : string = ':';
+    let BLANK : string  = ' ';
+
+
+    let d = new Date(timestamp);
+
+    let day = d.getDate();
+    let monthIndex = d.getMonth();
+    let year = d.getFullYear();
+    let h = d.getHours();
+    let hours = h>12 ? (h-12) : h;
+    let mins = d.getMinutes();
+    let ordinal = h>=12 ? 'PM' : 'AM';
+
+    return day
+    + DATE_SEPERATOR
+    + this.monthNames[monthIndex]
+    + DATE_SEPERATOR
+    + year
+    + BLANK
+    + hours
+    + TIME_SEPERATOR
+    + mins
+    + BLANK
+    + ordinal;
+  }
 }

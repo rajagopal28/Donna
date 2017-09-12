@@ -14,8 +14,8 @@
           <button class="btn btn-primary">Delete</button>
         </div>
         <small><strong>ID:</strong>{{item.id}}</small>
-        <small><strong>Valid from:</strong>{{item.validFrom}}</small>
-        <small><strong>Valid till:</strong>{{item.validTill}}</small>
+        <small><strong>Valid from:</strong>{{item.validFrom | dateformatter}}</small>
+        <small><strong>Valid till:</strong>{{item.validTill | dateformatter}}</small>
         <small><strong>Category:</strong>{{item.category}}</small>
       </a>
     </div>

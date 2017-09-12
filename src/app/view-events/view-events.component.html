@@ -19,8 +19,8 @@
             {{ep.participant.username}},
           </span>
         </small>
-        <small><strong>Valid from:</strong>{{item.eventStart}}</small>
-        <small><strong>Valid till:</strong>{{item.eventEnd}}</small>
+        <small><strong>Valid from:</strong>{{item.eventStart | dateformatter}}</small>
+        <small><strong>Valid till:</strong>{{item.eventEnd | dateformatter}}</small>
       </a>
     </div>
   </div>
