@@ -11,14 +11,21 @@
           <textarea name="description" [(ngModel)]="announcement.description" class="form-control" id="description">
           </textarea>
         </div>
+
         <div class="form-group col-md-6">
-          <label for="from" class="col-form-label">Valid From</label>
+          <label for="from" class="col-form-label">Valid From Date</label>
           <ngb-datepicker name="from" #dp1 [(ngModel)]="startDate" (navigate)="sDate = $event.next"></ngb-datepicker>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="fromT" class="col-form-label">Valid From Time</label>
           <ngb-timepicker name="fromT" [(ngModel)]="startTime"></ngb-timepicker>
         </div>
         <div class="form-group col-md-6">
-          <label for="to" class="col-form-label">Valid Till</label>
+          <label for="to" class="col-form-label">Valid Till Date</label>
           <ngb-datepicker name="to" #dp2 [(ngModel)]="endDate" (navigate)="eDate = $event.next"></ngb-datepicker>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="toT" class="col-form-label">Valid Till Time</label>
           <ngb-timepicker name="toT" [(ngModel)]="endTime"></ngb-timepicker>
         </div>
         <div class="form-group col-md-6">

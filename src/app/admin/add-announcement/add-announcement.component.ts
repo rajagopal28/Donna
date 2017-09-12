@@ -21,16 +21,22 @@ export class AddAnnouncementComponent implements OnInit {
   endDate: NgbDateStruct;
   eDate: {year: number, month: number, day: number};
 
-  startTime : {hour: 08, minute: 0};
-  endTime : {hour: 08, minute: 0};
+  startTime : {hour: 08, minute: 10};
+  endTime : {hour: 08, minute: 10};
 
   announcement : Announcement = new Announcement();
 
   constructor(private choresService: ChoresDataService) { }
 
   ngOnInit() {
-    this.sDate = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
-    this.eDate = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+    this.initData();
+  }
+
+  initData() {
+      this.announcement= new Announcement();
+      let now = new Date();
+      this.sDate = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+      this.eDate= {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};;
   }
   addAnnouncement() {
     var teDate = new Date(this.startDate.year,this.startDate.month,this.startDate.day,this.startTime.hour,this.startTime.minute,0);

@@ -12,16 +12,21 @@
           </textarea>
         </div>
         <div class="form-group col-md-6">
-          <label for="from" class="col-form-label">Event Start</label>
+          <label for="from" class="col-form-label">Event Start Date</label>
           <ngb-datepicker name="from" #dp1 [(ngModel)]="startDate" (navigate)="sDate = $event.next"></ngb-datepicker>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="fromT" class="col-form-label">Event Start Time</label>
           <ngb-timepicker name="fromT" [(ngModel)]="startTime"></ngb-timepicker>
         </div>
         <div class="form-group col-md-6">
-          <label for="to" class="col-form-label">Event End</label>
+          <label for="to" class="col-form-label">Event End Date</label>
           <ngb-datepicker name="to" #dp2 [(ngModel)]="endDate" (navigate)="eDate = $event.next"></ngb-datepicker>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="toT" class="col-form-label">Event End Time</label>
           <ngb-timepicker name="toT" [(ngModel)]="endTime"></ngb-timepicker>
         </div>
-
         <div class="form-group col-md-6">
           <label for="users" class="col-form-label">Participants</label>
           <tag-input  name="users"  theme='bootstrap' [ngModel]="['@item']"
@@ -36,7 +41,7 @@
         </div>
 
         <div class="form-group col-md-6">
-          <label for="inputCampus" class="col-form-label">Campus</label>
+          <label for="inputCampus" class="col-form-label">Location</label>
           <select id="locationId" [(ngModel)]="event.locationId" name="locationId"  class="form-control">
             <option>Choose Location</option>
             <<option *ngFor="let location of locations" value="{{location.id}}">{{location.name}}</option>

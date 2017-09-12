@@ -19,9 +19,9 @@ import { ChoresDataService } from '../../services/chores-data.service';
 })
 export class AddEventComponent implements OnInit {
   event: Event;
-  locations: [Location];
-  users: [User];
-  selectedUsers: [User];
+  locations: Array<Location>;
+  users: Array<User>;
+  selectedUsers: Array<User>;
   model: NgbDateStruct;
 
   startDate: NgbDateStruct;
@@ -30,13 +30,15 @@ export class AddEventComponent implements OnInit {
   endDate: NgbDateStruct;
   eDate: { year: number, month: number, day: number};
 
-    startTime : {hour: 08, minute: 0};
-    endTime : {hour: 08, minute: 0};
+  startTime : {hour: 08, minute: 10};
+  endTime : {hour: 08, minute: 10};
 
-  constructor(private userService: UserDataService, private locationService: LocationDataService, private choresService: ChoresDataService) { }
+  constructor(private userService: UserDataService,
+    private locationService: LocationDataService,
+    private choresService: ChoresDataService) { }
 
   ngOnInit() {
-    this.event= new Event();
+    this.initData();
     this.userService.getAllUsers({})
       .subscribe(response=> this.users = response.items,
        error => console.log(error),
@@ -47,6 +49,13 @@ export class AddEventComponent implements OnInit {
       error => console.log('Error:', error),
       () => console.log('Completed..')
     );
+  }
+  initData() {
+      this.event= new Event();
+      let now = new Date();
+      this.selectedUsers = [];
+      this.sDate = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+      this.eDate= {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};;
   }
   addEvent() {
     console.log(this.selectedUsers);
