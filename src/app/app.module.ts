@@ -58,7 +58,7 @@ import { FileUploadComponent } from './admin/file-upload/file-upload.component';
     TagInputModule,
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCXNSYiB8v_Vb_a3Z9gH2idT6Z3adg5mAk'
+      apiKey: '<YOUR_KEY>'
     }),
     RouterModule.forRoot([
       {

@@ -52,5 +52,9 @@ export class ViewUsersComponent implements OnInit {
         );
     }
   }
+  download() {
+    this.userService.downloadAllUsers();
+  }
+
 
 }

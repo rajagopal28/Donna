@@ -38,4 +38,8 @@ export class ViewCampusComponent implements OnInit {
     }
   }
 
+  download() {
+    this.locationService.downloadAllCampus();
+  }
+
 }

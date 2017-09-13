@@ -53,4 +53,8 @@ export class ViewLocationsComponent implements OnInit {
         );
     }
   }
+  download() {
+    this.locationService.downloadAllLocations();
+  }
+
 }
