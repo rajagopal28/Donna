@@ -1,5 +1,6 @@
 <div class="card">
   <div class="card-block">
+    <ngb-alert *ngIf="!message.isHidden" [type]="message.type">{{ message.content }}</ngb-alert>
     <form>
       <div class="form-row">
         <div class="form-group col-md-6">
