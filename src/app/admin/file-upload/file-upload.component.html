@@ -13,11 +13,11 @@
         </div>
         <div class="form-group col-md-6">
           <label for="inputName" class="col-form-label">Upload Locations file</label>
-          <input type="file" (change)="fileChange($event, 'locations')" class="form-control" id="location" placeholder="Upload file" accept=".json,.txt">
+          <input type="file" (change)="fileChange($event, 'locations')" class="form-control" id="locations" placeholder="Upload file" accept=".json,.txt">
           <div class="checkbox">
             <label><input type="checkbox" name="resetlocations" [(ngModel)]="reset.locations"> Reset Locations</label>
           </div>
-          <button (click)="uploadUsers()" type="submit" class="btn btn-primary">Upload</button>
+          <button (click)="uploadLocations()" type="submit" class="btn btn-primary">Upload</button>
         </div>
         <div class="form-group col-md-6">
           <label for="inputName" class="col-form-label">Upload users files</label>
