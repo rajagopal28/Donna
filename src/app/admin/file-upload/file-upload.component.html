@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-block">
+    <ngb-alert *ngIf="!message.isHidden" [type]="message.type">{{ message.content }}</ngb-alert>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputName" class="col-form-label">Upload Campus file</label>
+          <input type="file" (change)="fileChange($event, 'campus')" class="form-control" id="campus" placeholder="Upload file" accept=".json,.txt">
+          <div class="checkbox">
+            <label><input type="checkbox" name="resetcampus"  [(ngModel)]="reset.campus"> Reset Campus</label>
+          </div>
+          <button (click)="uploadCampus()" type="submit" class="btn btn-primary">Upload</button>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputName" class="col-form-label">Upload Locations file</label>
+          <input type="file" (change)="fileChange($event, 'locations')" class="form-control" id="location" placeholder="Upload file" accept=".json,.txt">
+          <div class="checkbox">
+            <label><input type="checkbox" name="resetlocations" [(ngModel)]="reset.locations"> Reset Locations</label>
+          </div>
+          <button (click)="uploadUsers()" type="submit" class="btn btn-primary">Upload</button>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputName" class="col-form-label">Upload users files</label>
+          <input type="file" (change)="fileChange($event, 'users')" class="form-control" id="users" placeholder="Upload file" accept=".json,.txt">
+          <div class="checkbox">
+            <label><input name="resetusers"  [(ngModel)]="reset.users" type="checkbox"> Reset Users</label>
+          </div>
+          <button (click)="uploadUsers()" type="submit" class="btn btn-primary">Upload</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
