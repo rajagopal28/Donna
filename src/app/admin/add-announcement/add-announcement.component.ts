@@ -4,7 +4,11 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 import { Announcement } from '../../models/app.models';
 import { ChoresDataService } from '../../services/chores-data.service';
-const now = new Date();
+
+const ALERT_TYPE_ERROR = 'danger';
+const ALERT_TYPE_SUCCESS = 'success';
+const DEFAULT_SUCCESS_MESSAGE = 'Insertion Successful!';
+
 @Component({
   selector: 'AddAnnouncement',
   templateUrl: './add-announcement.component.html',
@@ -12,6 +16,12 @@ const now = new Date();
   providers : [ChoresDataService]
 })
 export class AddAnnouncementComponent implements OnInit {
+
+  message : any = {
+    content : '',
+    isHidden: true,
+    type: ALERT_TYPE_ERROR
+  };
 
   model: NgbDateStruct;
 
@@ -46,10 +56,22 @@ export class AddAnnouncementComponent implements OnInit {
     this.announcement.validTill = teDate.getTime();
 
     this.choresService.addAnnouncement(this.announcement).subscribe(
-      response => console.log(response),
-      error => console.log(error),
+      response => this.handleResponse(response),
+      error =>   this.handleResponse(error),
       () => console.log("C0pLeted!")
     );
+  }
+  handleResponse(response){
+     console.log(response);
+     this.message.isHidden = false;
+     if(response.success) {
+       this.initData();
+       this.message.content = DEFAULT_SUCCESS_MESSAGE;
+       this.message.type = ALERT_TYPE_SUCCESS;
+     } else  {
+       this.message.content = response.message? response.message : 'ERROR:' + JSON.stringify(response);
+       this.message.type = ALERT_TYPE_ERROR;
+     }
   }
 
 }

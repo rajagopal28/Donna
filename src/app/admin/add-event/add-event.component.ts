@@ -11,6 +11,11 @@ import { User, Location, Event } from '../../models/app.models';
 import { UserDataService } from '../../services/user-data.service';
 import { LocationDataService } from '../../services/location-data.service';
 import { ChoresDataService } from '../../services/chores-data.service';
+
+const ALERT_TYPE_ERROR = 'danger';
+const ALERT_TYPE_SUCCESS = 'success';
+const DEFAULT_SUCCESS_MESSAGE = 'Insertion Successful!';
+
 @Component({
   selector: 'AddEvent',
   templateUrl: './add-event.component.html',
@@ -18,6 +23,14 @@ import { ChoresDataService } from '../../services/chores-data.service';
   providers: [UserDataService, LocationDataService, ChoresDataService]
 })
 export class AddEventComponent implements OnInit {
+
+
+  message : any = {
+    content : '',
+    isHidden: true,
+    type: ALERT_TYPE_ERROR
+  };
+
   event: Event;
   locations: Array<Location>;
   users: Array<User>;
@@ -75,10 +88,23 @@ export class AddEventComponent implements OnInit {
     this.event.eventEnd = teDate.getTime();
     console.log(this.event);
     this.choresService.addEvent(this.event).subscribe(
-      response => console.log(response),
-      error => console.log(error),
+      response =>  this.handleResponse,
+      error =>  this.handleResponse,
       () => console.log("C0pLeted!")
     );
+  }
+
+  handleResponse(response){
+     console.log(response);
+     this.message.isHidden = false;
+     if(response.success) {
+       this.initData();
+       this.message.content = DEFAULT_SUCCESS_MESSAGE;
+       this.message.type = ALERT_TYPE_SUCCESS;
+     } else  {
+       this.message.content = response.message? response.message : 'ERROR:' + JSON.stringify(response);
+       this.message.type = ALERT_TYPE_ERROR;
+     }
   }
 
   public onRemove = ($event: User) : void => {
