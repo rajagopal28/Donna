@@ -26,6 +26,7 @@ import { AddAnnouncementComponent } from './admin/add-announcement/add-announcem
 import { ViewAnnouncementsComponent } from './view-announcements/view-announcements.component';
 import { ViewEventsComponent } from './view-events/view-events.component';
 import { DateFormatterPipe} from './models/app.models';
+import { FileUploadComponent } from './admin/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DateFormatterPipe} from './models/app.models';
     AddAnnouncementComponent,
     ViewAnnouncementsComponent,
     ViewEventsComponent,
-    DateFormatterPipe
+    DateFormatterPipe,
+    FileUploadComponent
   ],
   imports: [
     NgbModule.forRoot(),
