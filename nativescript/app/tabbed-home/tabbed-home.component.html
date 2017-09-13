@@ -1,9 +1,0 @@
-<ActionBar [title]="title" class="action-bar"></ActionBar>
-<TabView [(ngModel)]="tabSelectedIndex" selectedColor="#FF0000" iosIconRenderingMode="alwaysOriginal" sdkToggleNavButton>
-    <StackLayout *tabItem="{title: 'Home'}">
-      <Home></Home>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Announcements'}">
-        <ViewAnnouncements></ViewAnnouncements>
-    </StackLayout>
-</TabView>
