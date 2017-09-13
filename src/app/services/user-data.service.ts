@@ -21,4 +21,8 @@ export class UserDataService extends BaseAPIDataService {
   authenticate(username: string, password: string) {
     return super.postData('users/login', {username: username, password: password});
   }
+  uploadUsers(file: File, reset:boolean = false) {
+    var suffix='?reset='+reset;
+    return super.postFile('users/upload'+suffix, 'users', file);
+  }
 }

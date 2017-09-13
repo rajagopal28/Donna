@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, URLSearchParams, Response, RequestOptions} from '@angular/http';
+import {Http, URLSearchParams, Response, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -20,6 +20,21 @@ export class BaseAPIDataService {
     }
     return this.http.post(BASE_API_URL + path, body)
                     .map(res=> res.json()).catch(this.handleError);
+  }
+
+  postFile(path:string, name:string, file: File) {
+        let formData:FormData = new FormData();
+        formData.append(name, file, file.name);
+        let headers = new Headers();
+        /** No need to include Content-Type in Angular 4 */
+        headers.append('enctype', 'multipart/form-data')
+        let options = new RequestOptions({ headers: headers });
+
+
+        console.log(BASE_API_URL + path);
+        return this.http.post(BASE_API_URL + path, formData, options)
+            .map(res => res.json())
+            .catch(this.handleError)
   }
 
   getData(path:string, paramsMap:any){

@@ -20,6 +20,10 @@ export class LocationDataService extends BaseAPIDataService {
   deleteLocation(location: Location) {
     return super.deleteData('locations/' + location.id, {});
   }
+  uploadLocations(file: File, reset:boolean = false) {
+    var suffix='?reset='+reset;
+    return super.postFile('locations/upload'+suffix, 'locations', file);
+  }
   getAllCampus() {
     return super.getData('campus', {});
   }
@@ -28,5 +32,9 @@ export class LocationDataService extends BaseAPIDataService {
   }
   deleteCampus(campus: Campus) {
     return super.deleteData('campus/' + campus.id, {});
+  }
+  uploadCampus(file: File, reset:boolean = false) {
+    var suffix='?reset='+reset;
+    return super.postFile('campus/upload'+suffix, 'campus', file);
   }
 }
