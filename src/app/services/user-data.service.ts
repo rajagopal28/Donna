@@ -12,6 +12,9 @@ export class UserDataService extends BaseAPIDataService {
   getAllUsers(params){
     return super.getData('users', params);
   }
+  downloadAllUsers() {
+    return super.getBlobData('users/download', 'users.json');
+  }
   addUser(user:User) {
     return super.postData('users', user);
   }

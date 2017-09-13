@@ -14,6 +14,9 @@ export class LocationDataService extends BaseAPIDataService {
   getAllLocations(params) {
     return super.getData('locations', params);
   }
+  downloadAllLocations() {
+    return super.getBlobData('locations/download', 'locations.json');
+  }
   addLocation(location: Location) {
     return super.postData('locations', location);
   }
@@ -26,6 +29,9 @@ export class LocationDataService extends BaseAPIDataService {
   }
   getAllCampus() {
     return super.getData('campus', {});
+  }
+  downloadAllCampus() {
+    return super.getBlobData('campus/download', 'campus.json');
   }
   addCampus(campus: Campus) {
     return super.postData('campus', campus);
