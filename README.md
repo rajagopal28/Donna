@@ -3,11 +3,13 @@
 ## Introduction:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Being in a huge corporate world, we often get lost literally. Yeah, most of the tech giants own huge blocks of buildings and they operate in a seamless way, but being humans we often tend to remember all details of what is where in the real world. On a specific note, being at work which involves lots of floors, partitions, and wings, we often wind up moving across various parts of the mazes that we live across. With smart personal assistants, this can very well be addressed by making our workplace a lot easy to move and comfy to work.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detailed proposal documentation can be found [Here](https://file.ac/G5EImf07QBs/Donna-TheSmartOfficeAssistant.pdf).
+Detailed proposal documentation can be found [Here](https://file.ac/G5EImf07QBs/Donna-TheSmartOfficeAssistant.pdf).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detailed Documentation on Android Mobile App can be found [Here](nativescript/app ).
+Detailed Documentation on Android Mobile App can be found [Here](https://github.com/rajagopal28/TheDonna).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download the mobile application executable  [Here](https://file.ac/G5EImf07QBs/com.nativescript.donna.ai­.apk )
+Detailed Documentation on The contextual data backed can be found [Here](https://github.com/rajagopal28/donna-backend).
+
+Download the mobile application executable  [Here](https://file.ac/G5EImf07QBs/com.nativescript.donna.ai­.apk )
 
 ## Web Application Architecture:
 ![Architecture](https://file.ac/G5EImf07QBs/image00.png)
@@ -28,16 +30,54 @@
 To run in local follow the steps given in this [Link](LocalSetup.md)
 
 ## Major User Flows:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Full Disclosure:** This is a simple 3 paged app that I have built in a time of 3 weeks. I have few more planned items that went missing as technology was not helping me much with time.
-### Home:
-![Home](https://file.ac/G5EImf07QBs/image01.PNG)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are 3 major flows in this app
+**Admin and Session:** where we can login or add users, locations, campus, events and announcements. These views are generally used to feed data in to the system and manage them. The contextual backend is just an API backend and these views lets us manage all the data.
+**Chatbot:** Essential crux of this app is the chat bot where the authenticated user interacts with the api.ai server and it gets fulfilled for some of the intents by the contextual backend we have created.
+**Maps:** Indoor navigation is the essential concept behind this project. It is deeply tied between the contextual backend as it holds the relevant data. The Mazemap library is used for indoor maps and navigation.
+
+### Home and Login
+![Home](https://file.ac/G5EImf07QBs/image01.png)
+![User Login](https://file.ac/G5EImf07QBs/image02.png)
+
+### Events and Announcements
+![Announcements](https://file.ac/G5EImf07QBs/image03.png)
+![Announcements](https://file.ac/G5EImf07QBs/image04.png)
+![Events](https://file.ac/G5EImf07QBs/image05.png)
+![Events](https://file.ac/G5EImf07QBs/image06.png)
 
 ### ChatBot:
-![ChatBot](https://file.ac/G5EImf07QBs/image02.PNG)
+![ChatBot](https://file.ac/G5EImf07QBs/image07.png)
+![ChatBot](https://file.ac/G5EImf07QBs/image08.png)
+![ChatBot](https://file.ac/G5EImf07QBs/image09.png)
+![ChatBot](https://file.ac/G5EImf07QBs/image10.png)
 
-### Indoor Navigation:
-![Indoor Map](https://file.ac/G5EImf07QBs/image03.PNG)
-![Indoor Navigation](https://file.ac/G5EImf07QBs/image04.PNG)
+### Maps:
+![Maps](https://file.ac/G5EImf07QBs/image10.png)
+![Maps](https://file.ac/G5EImf07QBs/image11.png)
+![Maps](https://file.ac/G5EImf07QBs/image12.png)
+![Maps](https://file.ac/G5EImf07QBs/image13.png)
+![Maps](https://file.ac/G5EImf07QBs/image14.png)
+![Maps](https://file.ac/G5EImf07QBs/image15.png)
+![Maps](https://file.ac/G5EImf07QBs/image16.png)
+![Maps](https://file.ac/G5EImf07QBs/image17.png)
+
+### Admin:
+![Users](https://file.ac/G5EImf07QBs/image18.png)
+![Users](https://file.ac/G5EImf07QBs/image19.png)
+![Campus](https://file.ac/G5EImf07QBs/image20.png)
+![Campus](https://file.ac/G5EImf07QBs/image21.png)
+![Locations](https://file.ac/G5EImf07QBs/image22.png)
+![Locations](https://file.ac/G5EImf07QBs/image23.png)
+![Add Location](https://file.ac/G5EImf07QBs/image24.png)
+![Add Location](https://file.ac/G5EImf07QBs/image25.png)
+![Add Campus](https://file.ac/G5EImf07QBs/image26.png)
+![Add Campus](https://file.ac/G5EImf07QBs/image27.png)
+![Add Event](https://file.ac/G5EImf07QBs/image28.png)
+![Add Event](https://file.ac/G5EImf07QBs/image29.png)
+![Add Event](https://file.ac/G5EImf07QBs/image30.png)
+![Add Announcement](https://file.ac/G5EImf07QBs/image31.png)
+![Add Announcement](https://file.ac/G5EImf07QBs/image32.png)
+![Add Announcement](https://file.ac/G5EImf07QBs/image34.png)
 
 ## References:
 - https://github.com/ng-bootstrap/ng-bootstrap#demo
