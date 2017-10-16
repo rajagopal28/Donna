@@ -36,5 +36,21 @@ export class ViewEventsComponent implements OnInit {
       () => console.log('C0mpleted!')
     );
   }
-
+   delete(event: Event) {
+    console.log('deleting', event);
+    if (confirm('Are you sure you want to remove this event?')) {
+        console.log('Deleting confirmation');
+        this.choresService.deleteEvent(event).subscribe(
+          response => {
+            console.log(response);
+            let index = this.events.indexOf(event);
+            if(index !== -1){
+              this.events.splice(index, 1);
+            }
+          },
+          error => console.log(error),
+          () => console.log('Completed yahah')
+        );
+    }
+  }
 }
