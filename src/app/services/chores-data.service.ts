@@ -15,10 +15,17 @@ export class ChoresDataService extends BaseAPIDataService {
   addAnnouncement(announcement : Announcement) {
     return super.postData('announcements', announcement);
   }
+  deleteAnnouncement(announcement : Announcement) {
+    return super.deleteData('announcements\\'+ announcement.id, {});
+  }
    getEvents(params){
      return super.getData('events', params);
    }
    addEvent(event : Event) {
      return super.postData('events', event);
+   }
+
+   deleteEvent(event : Event) {
+     return super.deleteData('events\\'+ event.id, {});
    }
 }
