@@ -22,4 +22,21 @@ export class ViewAnnouncementsComponent implements OnInit {
     );
   }
 
+  delete(announcement: Announcement) {
+    console.log('deleting', announcement);
+    if (confirm('Are you sure you want to remove this announcement?')) {
+        console.log('Deleting confirmation');
+        this.choresService.deleteAnnouncement(announcement).subscribe(
+          response => {
+            console.log(response);
+            let index = this.announcements.indexOf(announcement);
+            if(index !== -1){
+              this.announcements.splice(index, 1);
+            }
+          },
+          error => console.log(error),
+          () => console.log('Completed yahah')
+        );
+    }
+  }
 }
