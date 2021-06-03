@@ -9,7 +9,7 @@ Detailed Documentation on Android Mobile App can be found [Here](https://github.
 
 Detailed Documentation on The contextual data backed can be found [Here](https://github.com/rajagopal28/donna-backend).
 
-Download the mobile application executable  [Here](./statics/com.nativescript.donna.ai­.apk )
+Download the mobile application executable  [Here](./statics/com.nativescript.donna.ai.apk)
 
 ## Web Application Architecture:
 ![Architecture](./statics/image00.png)
