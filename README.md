@@ -3,16 +3,16 @@
 ## Introduction:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Being in a huge corporate world, we often get lost literally. Yeah, most of the tech giants own huge blocks of buildings and they operate in a seamless way, but being humans we often tend to remember all details of what is where in the real world. On a specific note, being at work which involves lots of floors, partitions, and wings, we often wind up moving across various parts of the mazes that we live across. With smart personal assistants, this can very well be addressed by making our workplace a lot easy to move and comfy to work.
 
-Detailed proposal documentation can be found [Here](https://file.ac/G5EImf07QBs/Donna-TheSmartOfficeAssistant.pdf).
+Detailed proposal documentation can be found [Here](./statics/Donna-TheSmartOfficeAssistant.pdf).
 
 Detailed Documentation on Android Mobile App can be found [Here](https://github.com/rajagopal28/TheDonna).
 
 Detailed Documentation on The contextual data backed can be found [Here](https://github.com/rajagopal28/donna-backend).
 
-Download the mobile application executable  [Here](https://file.ac/G5EImf07QBs/com.nativescript.donna.ai­.apk )
+Download the mobile application executable  [Here](./statics/com.nativescript.donna.ai­.apk )
 
 ## Web Application Architecture:
-![Architecture](https://file.ac/G5EImf07QBs/image00.png)
+![Architecture](./statics/image00.png)
 
 ## Technical challenges:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Angular2** - While starting this project I wanted this to be a mobile app as it involves navigation and chat type feature after knowing that native script supported angular2 framwork I felt it would be more fun to learn two techs for a single project. Angular2 was more roubust and structured when compared with it's predecessors.
@@ -36,30 +36,30 @@ To run in local follow the steps given in this [Link](LocalSetup.md)
 **Maps:** Indoor navigation is the essential concept behind this project. It is deeply tied between the contextual backend as it holds the relevant data. The Mazemap library is used for indoor maps and navigation.
 
 ### Home and Login
-![Home](https://file.ac/G5EImf07QBs/image01.png)
-![User Login](https://file.ac/G5EImf07QBs/image02.png)
+![Home](./statics/image01.png)
+![User Login](./statics/image02.png)
 
 ### Events and Announcements
-![Announcements](https://file.ac/G5EImf07QBs/image03.png)
-![Announcements](https://file.ac/G5EImf07QBs/image04.png)
-![Events](https://file.ac/G5EImf07QBs/image05.png)
-![Events](https://file.ac/G5EImf07QBs/image06.png)
+![Announcements](./statics/image03.png)
+![Announcements](./statics/image04.png)
+![Events](./statics/image05.png)
+![Events](./statics/image06.png)
 
 ### ChatBot:
-![ChatBot](https://file.ac/G5EImf07QBs/image07.png)
-![ChatBot](https://file.ac/G5EImf07QBs/image08.png)
-![ChatBot](https://file.ac/G5EImf07QBs/image09.png)
-![ChatBot](https://file.ac/G5EImf07QBs/image10.png)
+![ChatBot](./statics/image07.png)
+![ChatBot](./statics/image08.png)
+![ChatBot](./statics/image09.png)
+![ChatBot](./statics/image10.png)
 
 ### Maps:
-![Maps](https://file.ac/G5EImf07QBs/image10.png)
-![Maps](https://file.ac/G5EImf07QBs/image11.png)
-![Maps](https://file.ac/G5EImf07QBs/image12.png)
-![Maps](https://file.ac/G5EImf07QBs/image13.png)
-![Maps](https://file.ac/G5EImf07QBs/image14.png)
-![Maps](https://file.ac/G5EImf07QBs/image15.png)
-![Maps](https://file.ac/G5EImf07QBs/image16.png)
-![Maps](https://file.ac/G5EImf07QBs/image17.png)
+![Maps](./statics/image10.png)
+![Maps](./statics/image11.png)
+![Maps](./statics/image12.png)
+![Maps](./statics/image13.png)
+![Maps](./statics/image14.png)
+![Maps](./statics/image15.png)
+![Maps](./statics/image16.png)
+![Maps](./statics/image17.png)
 
 ### Admin:
 There are set of views that are created to manage the contextual data. Please Click [Here](admin.md) to View about those Screens.
